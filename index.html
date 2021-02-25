@@ -29,61 +29,57 @@
 
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a data-id="base64" class="nav-link tab_btn  btn m-2 btn btn-sm btn-danger active">
+                <a data-id="base64" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark active_tab">
                     Base64
-                </a>
+               </a>
             </li>
             <li class="nav-item">
-                <a data-id="urlencode" class="nav-link tab_btn  btn m-2 btn btn-sm btn-danger">
+                <a data-id="urlencode" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
                     Url
-                </a>
+               </a>
             </li>
             <li class="nav-item">
-                <a data-id="hexer" class="nav-link tab_btn  btn m-2 btn btn-sm btn-danger">
+                <a data-id="hexer" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
                     HEX
-                </a>
+               </a>
             </li>
             <li class="nav-item">
-                <a data-id="hash" class="nav-link tab_btn  btn m-2 btn btn-sm btn-danger">
+                <a data-id="hash" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
                     Hash
-                </a>
+               </a>
             </li>
             <li class="nav-item">
-                <a data-id="cmdlib" class="nav-link tab_btn  btn m-2 btn btn-sm btn-info">
+                <a data-id="cmdlib" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
                     cmd lib
-                </a>
+               </a>
             </li>
             <li class="nav-item">
-                <a data-id="sql" class="nav-link tab_btn  btn m-2 btn btn-sm btn-info">
+                <a data-id="sql" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
                     SQL Injection
-                </a>
+               </a>
             </li>
             <li class="nav-item">
-                <a href="https://github.com/4nkitd/" target="_blank" class="nav-link  btn m-2 btn btn-sm btn-dark">
+                <a href="https://github.com/4nkitd/" target="_blank" class="nav-link  btn m-2 btn btn-sm btn-primary">
                     Github
-                </a>
+               </a>
             </li>
         </ul>
 
         <div class="container-fluid my-2">
-            <div id="base64" class="border border-danger bg-tab-content rounded p-3">
+            <div id="base64" class="border border-success bg-tab-content rounded p-3">
 
                 <div class="row mx-md-4 mx-sm-1">
 
-                    <div class="col-md-6 p-2">
-                        <label for="url_dec" class="text-danger "><small>Base64 Decoded</small> </label>
-                        <textarea id="base64_dec" rows="3" class="form-control border border-danger"
+                    <div class="col-md-12 p-2">
+                        <label for="url_dec" class="text-success">Base64</label>
+                        <textarea id="base64_data" rows="3" class="form-control border border-success"
                             placeholder="Readable String"></textarea>
-                    </div>
-                    <div class="col-md-6 p-2">
-                        <label for="url_enc" class="text-danger "><small>Base64 Encoded</small> </label>
-                        <textarea id="base64_enc" rows="3" class="form-control border border-danger"
-                            placeholder="Encrypted String"></textarea>
+                   
                     </div>
 
                     <div class="col-md-4">
-                        <button class="btn col-md-5 btn-info btn-sm mx-auto base64_encode">Encode</button>
-                        <button class="btn col-md-5 btn-warning btn-sm mx-auto base64_decode">Decode</button>
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto base64_encode">Encode</button>
+                        <button class="btn col-md-5 btn-danger btn-sm mx-auto base64_decode">Decode</button>
                     </div>
                     <div class="col-md-8 "></div>
 
@@ -91,24 +87,19 @@
 
             </div>
 
-            <div style="display: none;" id="urlencode" class=" border border-danger bg-tab-content rounded p-3 ">
+            <div style="display: none;" id="urlencode" class=" border border-success bg-tab-content rounded p-3 ">
 
                 <div class="row mx-md-4 mx-sm-1">
 
-                    <div class="col-md-6 p-2">
-                        <label for="url_dec" class="text-danger "><small>Url Decoded</small></label>
-                        <textarea id="url_dec" rows="3" class="form-control border border-danger"
+                    <div class="col-md-12 p-2">
+                        <label for="url_data" class="text-success">Url</label>
+                        <textarea id="url_data" rows="3" class="form-control border border-success"
                             placeholder="Readable String"></textarea>
-                    </div>
-                    <div class="col-md-6 p-2">
-                        <label for="url_enc" class="text-danger "><small>Url Encoded</small></label>
-                        <textarea id="url_enc" rows="3" class="form-control border border-danger"
-                            placeholder="Encrypted String"></textarea>
                     </div>
 
                     <div class="col-md-4">
-                        <button class="btn col-md-5 btn-info btn-sm mx-auto url_encode">Encode</button>
-                        <button class="btn col-md-5 btn-warning btn-sm mx-auto url_decode">Decode</button>
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto url_encode">Encode</button>
+                        <button class="btn col-md-5 btn-danger btn-sm mx-auto url_decode">Decode</button>
                     </div>
                     <div class="col-md-8 ">
                     </div>
@@ -118,24 +109,19 @@
             </div>
 
 
-            <div style="display: none;" id="hexer" class="border border-danger bg-tab-content rounded p-3 ">
+            <div style="display: none;" id="hexer" class="border border-success bg-tab-content rounded p-3 ">
 
                 <div class="row mx-md-4 mx-sm-1">
 
-                    <div class="col-md-6 p-2">
-                        <label for="hex_dec" class="text-danger "><small>hex Decoded</small></label>
-                        <textarea id="hex_dec" rows="3" class="form-control border border-danger"
+                    <div class="col-md-12 p-2">
+                        <label for="hex_data" class="text-success">HEX</label>
+                        <textarea id="hex_data" rows="3" class="form-control border border-success"
                             placeholder="Readable String"></textarea>
-                    </div>
-                    <div class="col-md-6 p-2">
-                        <label for="hex_enc" class="text-danger "><small>hex Encoded</small></label>
-                        <textarea id="hex_enc" rows="3" class="form-control border border-danger"
-                            placeholder="Encrypted String"></textarea>
                     </div>
 
                     <div class="col-md-4">
-                        <button class="btn col-md-5 btn-info btn-sm mx-auto hex_encode">Encode</button>
-                        <button class="btn col-md-5 btn-warning btn-sm mx-auto hex_decode">Decode</button>
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto hex_encode">Encode</button>
+                        <button class="btn col-md-5 btn-danger btn-sm mx-auto hex_decode">Decode</button>
                     </div>
                     <div class="col-md-8 ">
                     </div>
@@ -144,13 +130,13 @@
 
             </div>
 
-            <div style="display: none;" id="hash" class="border border-danger bg-tab-content rounded p-3 ">
+            <div style="display: none;" id="hash" class="border border-success bg-tab-content rounded p-3 ">
 
                 <div class="row mx-md-4 mx-sm-1">
 
                     <div class="col-md-4 p-2">
                         <div class="form-group">
-                            <label for="hash_select_enc" class="text-danger "><small>Select Encryption :</small></label>
+                            <label for="hash_select_enc" class="text-success">Selectall></label>
                             <select class="form-control" aria-label="Select Encryption" id="hash_select_enc">
                                 <option value="" selected>Select Encryption</option>
                                 <option value="MD5">MD5</option>
@@ -160,30 +146,22 @@
                                 <option value="AES">AES</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="hash_salt" class="text-danger "><small>Encryption Salt</small></label>
-                            <input type="text" class="form-control" id="hash_salt">
+                        <div class="form-group my-auto">
+                            <button class="btn col-md-12 my-2 btn-primary btn mx-auto hash_encode">Encode Content</button>
+                           <button class="btn col-md-12 my-2 btn-danger btn mx-auto hash_decode">Decode Content</button>
                         </div>
                     </div>
 
                     <div class="col-md-8 p-2">
                         <div class="form-group">
-                            <label for="hash_dec" class="text-danger aes-alert"><small>Readable Text</small></label>
-                            <textarea id="hash_dec" rows="1" class="form-control border border-danger"
-                                placeholder="Readable Text"></textarea>
+                            <label for="hash_salt" class="text-success">Encryption Salt</label>
+                            <input type="text" class="form-control" id="hash_salt">
                         </div>
                         <div class="form-group">
-                            <label for="hash_enc" class="text-danger "><small>Encrypted Text</small></label>
-                            <textarea id="hash_enc" rows="1" class="form-control border border-danger"
-                                placeholder="Encrypted Text"></textarea>
+                            <label for="hash_data" class="text-success"> Data </label>
+                            <textarea id="hash_data" rows="2" class="form-control border border-success"
+                                placeholder="Readable Text"></textarea>
                         </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <button class="btn col-md-5 btn-info btn-sm mx-auto hash_encode">Encode</button>
-                        <button class="btn col-md-5 btn-warning btn-sm mx-auto hash_decode">Decode</button>
-                    </div>
-                    <div class="col-md-8 ">
                     </div>
 
                 </div>
@@ -191,7 +169,7 @@
             </div>
 
             <div style="display: none;" id="cmdlib"
-                class="border border-danger bg-tab-content bg-dark shadow rounded p-3 ">
+                class="border border-success bg-tab-content bg-dark shadow rounded p-3 ">
 
                 <div class="row mx-auto my-auto bg-dark text-success">
 
@@ -246,7 +224,7 @@
             </div>
 
             <div style="display: none;" id="sql"
-                class="border border-danger bg-tab-content bg-dark shadow rounded p-3 ">
+                class="border border-success bg-tab-content bg-dark shadow rounded p-3 ">
 
                 <div class="row mx-auto my-auto bg-dark text-success">
 

@@ -1,6 +1,6 @@
 {
 	"name": "h4ck3r",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "All in one Red Team Tool Kit",
 	"browser_action": {
 		"default_title": "h4ck3r",
@@ -19,5 +19,5 @@
 		"128": "./assets/icons/icon-128.png"
 	},
 	"manifest_version": 2,
-	"devtools_page": "./devtools/devtools.html"
+	"devtools_page": "devtools/devtools.html"
 }

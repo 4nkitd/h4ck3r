@@ -1,8 +1,18 @@
 .bg-body {
-        color: #8f0606;
-        background-color: #e79fc9;
+        color: #cfe2ff;
+        background-color: #9b9b9b;
 }
 
 .bg-tab-content {
-    background-color: #cfe2ff;
+    background-color: #353434;
+}
+
+.active_tab {
+    background: #298416;
+    color: #000;
+}
+
+.active_tab:hover {
+    background: #154e0a;
+    color: #fff;
 }

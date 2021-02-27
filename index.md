@@ -1,5 +1,7 @@
 A Browser Extension for chromium/firefox browser. Small tool for Developers & Pentesters.
 
+## stats
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2F4nkitd%2Fh4ck3r&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://github.com/4nkitd)
 ## Reason Of Existence
 
 1. My fav Extension [HackBar](https://chrome.google.com/webstore/detail/hackbar/djmoeoifnlhjolebkehmpaocfnipknbh) moved to a paid model.

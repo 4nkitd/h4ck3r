@@ -12,6 +12,7 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 
 ## How to use 
 * Press F12 & click h4ck3r on the menu.
+
 ## Features 
 * Encoding/Decoding ( base64, url, hex ).
 * Encryption ( md5, sha256, sha512, sha3 ).

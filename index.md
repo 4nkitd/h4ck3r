@@ -1,37 +1,23 @@
-## Welcome to GitHub Pages
+A Browser Extension for chromium/firefox browser. Small tool for Developers & Pentesters.
 
-You can use the [editor on GitHub](https://github.com/4nkitd/h4ck3r/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Reason Of Existence
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+1. My fav Extension [HackBar](https://chrome.google.com/webstore/detail/hackbar/djmoeoifnlhjolebkehmpaocfnipknbh) moved to a paid model.
+1. Feels like a lot of work look for site because can't remember their domains.
+1. Can't find anything similar to [HackBar](https://chrome.google.com/webstore/detail/hackbar/djmoeoifnlhjolebkehmpaocfnipknbh) that's free & OpenSource
+1. Don't Trust the sites & can't check their code always.
+1. Don't Trust google/fb & other analytics on those sites.
 
-### Markdown
+## How to use 
+* Press F12 & click h4ck3r on the menu.
+## Features 
+* Encoding/Decoding ( base64, url, hex ).
+* Encryption ( md5, sha256, sha512, sha3 ).
+* Cypher ( AES encryption/Decryption ).
+* Tools ( json beautifier ).
+* Wiki ( helpful doc of **sql injection**, **Python**, **linux**, **networking**,  ).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/4nkitd/h4ck3r/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Store Availability
+* Firefox Extension: https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/
+* Chrome Extension: **Pending**
+* Edge Extension: **pending** 

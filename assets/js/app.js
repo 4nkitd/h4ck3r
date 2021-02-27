@@ -101,6 +101,7 @@ $(function() {
     })
 
     $('.json_beautifier').on('click', (elem) => {
+        $('.json__retry').show();
         var enc_text = $('#json_data').val();
         try {
             var j_obj = JSON.parse(enc_text);
@@ -110,13 +111,14 @@ $(function() {
         }
         var str = JSON.stringify(j_obj, undefined, 4);
         $('#json_data').hide();
+        $('#json_data_p').show();
         $('#json_data_p').html(syntaxHighlight(str));
     })
 
     $('.json__retry').on('click', (elem) => {
+        $('.json__retry').hide();
         $('#json_data').show();
-        
-        $('#json_data_p').html(syntaxHighlight(str));
+        $('#json_data_p').hide();
     })
     
 });

@@ -49,6 +49,11 @@
                </a>
             </li>
             <li class="nav-item">
+                <a data-id="json" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    Json
+                </a>
+            </li>
+            <li class="nav-item">
                 <a data-id="cmdlib" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
                     cmd lib
                </a>
@@ -105,6 +110,29 @@
                     </div>
 
                 </div>
+
+            </div>
+
+
+            <div style="display: none;" id="json" class=" border border-success bg-tab-content rounded p-3 ">
+
+                    <div class="row mx-md-4 mx-sm-1">
+
+                        <div class="col-md-12 p-2">
+                            <label for="json_data" class="text-success">Json Beautifier</label>
+                            <textarea id="json_data" rows="3" class="form-control border border-success"
+                                placeholder="Readable String"></textarea>
+                                <ppre id="json_data_p" class="d-block"></ppre>
+                        </div>
+
+                        <div class="col-md-4">
+                            <button class="btn col-md-5 btn-primary btn-sm mx-auto json_beautifier">Beautify</button>
+                            <button class="btn col-md-5 btn-primary btn-sm mx-auto json__retry">Retry</button>
+                        </div>
+                        <div class="col-md-8 ">
+                        </div>
+
+                    </div>
 
             </div>
 

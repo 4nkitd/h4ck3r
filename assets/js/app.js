@@ -51,8 +51,6 @@ $(function() {
         $('#hex_data').val(hex2a(enc_text));
     })
 
-
-
     $('.hash_encode').on('click',(elem)=>{
         var dec_text = $('#hash_data').val();  
         var enc_type = $('#hash_select_enc').val();
@@ -102,4 +100,42 @@ $(function() {
         $('#hash_data').val(enc_res);
     })
 
+    $('.json_beautifier').on('click', (elem) => {
+        var enc_text = $('#json_data').val();
+        try {
+            var j_obj = JSON.parse(enc_text);
+        } catch (error) {
+            $('#json_data').val('Invalid Json String.');
+            return;  
+        }
+        var str = JSON.stringify(j_obj, undefined, 4);
+        $('#json_data').hide();
+        $('#json_data_p').html(syntaxHighlight(str));
+    })
+
+    $('.json__retry').on('click', (elem) => {
+        $('#json_data').show();
+        
+        $('#json_data_p').html(syntaxHighlight(str));
+    })
+    
 });
+
+function syntaxHighlight(json) {
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}

@@ -24,6 +24,7 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 
 # Notes
 * will auto copy your result to clipboard from after version 0.0.4
+
 ## Store Availability
 * Firefox Extension: [here](https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/)
 * Chrome Extension: **Pending**

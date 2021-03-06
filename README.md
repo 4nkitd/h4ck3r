@@ -26,4 +26,4 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 ## Store Availability
 * Firefox Extension: https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/
 * Chrome Extension: **Pending**
-* Edge Extension: **pending** 
+* Edge Extension: https://microsoftedge.microsoft.com/addons/detail/h4ck3r/eglafmgecldkdjfodkjgcpepkodndgdg 

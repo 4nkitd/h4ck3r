@@ -22,7 +22,9 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 * Tools ( json beautifier ).
 * Wiki ( helpful doc of **sql injection**, **Python**, **linux**, **networking**,  ).
 
+# Notes
+* will auto copy your result to clipboard from after version 0.0.4
 ## Store Availability
-* Firefox Extension: https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/
+* Firefox Extension: [here](https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/)
 * Chrome Extension: **Pending**
-* Edge Extension: https://microsoftedge.microsoft.com/addons/detail/h4ck3r/eglafmgecldkdjfodkjgcpepkodndgdg
+* Edge Extension: [here](https://microsoftedge.microsoft.com/addons/detail/h4ck3r/eglafmgecldkdjfodkjgcpepkodndgdg)

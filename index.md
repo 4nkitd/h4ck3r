@@ -22,7 +22,7 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 * Tools ( json beautifier ).
 * Wiki ( helpful doc of **sql injection**, **Python**, **linux**, **networking**,  ).
 
-# Notes
+## Notes
 * will auto copy your result to clipboard from after version 0.0.4
 
 ## Store Availability

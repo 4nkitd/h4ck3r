@@ -27,7 +27,7 @@
 
     <div class="container-fluid">
 
-        <ul class="nav nav-tabs">
+        <nav class="nav nav-tabs">
             <li class="nav-item">
                 <a data-id="base64" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark active_tab">
                     Base64
@@ -68,9 +68,10 @@
                     Github
                </a>
             </li>
-        </ul>
+        </nav>
 
         <div class="container-fluid my-2">
+
             <div id="base64" class="border border-success bg-tab-content rounded p-3">
 
                 <div class="row mx-md-4 mx-sm-1">
@@ -82,11 +83,15 @@
                    
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-2">
                         <button class="btn col-md-5 btn-primary btn-sm mx-auto base64_encode">Encode</button>
                         <button class="btn col-md-5 btn-danger btn-sm mx-auto base64_decode">Decode</button>
                     </div>
-                    <div class="col-md-8 "></div>
+                    <div class="col-md-8  mt-2">
+                        <p class="text-success text-right">
+                            Your results will be auto copied to clipboard.
+                        </p>
+                    </div>
 
                 </div>
 
@@ -102,11 +107,14 @@
                             placeholder="Readable String"></textarea>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-2">
                         <button class="btn col-md-5 btn-primary btn-sm mx-auto url_encode">Encode</button>
                         <button class="btn col-md-5 btn-danger btn-sm mx-auto url_decode">Decode</button>
                     </div>
-                    <div class="col-md-8 ">
+                    <div class="col-md-8  mt-2">
+                        <p class="text-success text-right">
+                            Your results will be auto copied to clipboard.
+                        </p>
                     </div>
 
                 </div>
@@ -148,11 +156,14 @@
                             placeholder="Readable String"></textarea>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-2">
                         <button class="btn col-md-5 btn-primary btn-sm mx-auto hex_encode">Encode</button>
                         <button class="btn col-md-5 btn-danger btn-sm mx-auto hex_decode">Decode</button>
                     </div>
-                    <div class="col-md-8 ">
+                    <div class="col-md-8  mt-2">
+                        <p class="text-success text-right">
+                            Your results will be auto copied to clipboard.
+                        </p>
                     </div>
 
                 </div>
@@ -165,7 +176,7 @@
 
                     <div class="col-md-4 p-2">
                         <div class="form-group">
-                            <label for="hash_select_enc" class="text-success">Selectall></label>
+                            <label for="hash_select_enc" class="text-success">Encryption/Hashing</label>
                             <select class="form-control" aria-label="Select Encryption" id="hash_select_enc">
                                 <option value="" selected>Select Encryption</option>
                                 <option value="MD5">MD5</option>
@@ -183,13 +194,19 @@
 
                     <div class="col-md-8 p-2">
                         <div class="form-group">
-                            <label for="hash_salt" class="text-success">Encryption Salt</label>
-                            <input type="text" class="form-control" id="hash_salt">
+                            <label for="hash_salt" class="text-success">Encryption Salt ( -- 
+                                <span class="d-inline float-right text-success ">
+                                     Your results will be auto copied to clipboard. 
+                                    <span /> -- )
+                            </label>
+                            
+                            <input type="text" class="form-control" id="hash_salt" placeholder="Only for AES">
                         </div>
                         <div class="form-group">
                             <label for="hash_data" class="text-success"> Data </label>
                             <textarea id="hash_data" rows="2" class="form-control border border-success"
                                 placeholder="Readable Text"></textarea>
+                                
                         </div>
                     </div>
 
@@ -312,8 +329,6 @@
 
 
             </div>
-
-
 
         </div>
 

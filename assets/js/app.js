@@ -15,40 +15,43 @@ $(function() {
 
     });
 
-
-
     $('.base64_encode').on('click',(elem)=>{
         var dec_text = $('#base64_data').val();        
         $('#base64_data').val(window.btoa(dec_text));
+        copy_result_if_asked($('#base64_data'));
     })
 
     $('.base64_decode').on('click',(elem)=>{
         var enc_text = $('#base64_data').val();        
         $('#base64_data').val(window.atob(enc_text));
+        copy_result_if_asked($('#base64_data'));
+
     })
-
-
 
     $('.url_encode').on('click',(elem)=>{
         var dec_text = $('#url_data').val();        
         $('#url_data').val(window.encodeURI(dec_text));
+        copy_result_if_asked($('#url_data'));
+
     })
 
     $('.url_decode').on('click',(elem)=>{
         var enc_text = $('#url_data').val();        
         $('#url_data').val(window.decodeURI(enc_text));
+        copy_result_if_asked($('#url_data'));
     })
-
-
 
     $('.hex_encode').on('click',(elem)=>{
         var dec_text = $('#hex_data').val();        
         $('#hex_data').val(String2Hex(utf8.encode(dec_text)));
+        copy_result_if_asked($('#hex_data'));
+
     })
 
     $('.hex_decode').on('click',(elem)=>{
         var enc_text = $('#hex_data').val();        
         $('#hex_data').val(hex2a(enc_text));
+        copy_result_if_asked($('#hex_data'));
     })
 
     $('.hash_encode').on('click',(elem)=>{
@@ -80,6 +83,8 @@ $(function() {
 
 
         $('#hash_data').val(enc_res);
+        copy_result_if_asked($('#hash_data'));
+
     })
 
     $('.hash_decode').on('click',(elem)=>{
@@ -98,6 +103,7 @@ $(function() {
 
         $('.aes-alert').html('If text is not readable try hex decoding');
         $('#hash_data').val(enc_res);
+        copy_result_if_asked($('#hash_data'));
     })
 
     $('.json_beautifier').on('click', (elem) => {
@@ -140,4 +146,34 @@ function syntaxHighlight(json) {
         }
         return '<span class="' + cls + '">' + match + '</span>';
     });
+}
+
+function copy_result_if_asked(target) {
+
+    var will_copy_val = $('#will_copy:checkbox:checked').length > 0;
+    
+    if (true){
+
+        copyToClipboard(target);
+
+        $(target).find('label').insertAfter($('.extra'));
+        $('.extra').addClass('text-dark');
+        
+        setTimeout(() => {
+            $('.extra').removeClass('text-dark');
+            $('.extra').remove();
+        }, 1000);
+
+    }
+
+}
+
+
+function copyToClipboard(elem) {
+    let $temp = $('<input>');
+    $('body').append($temp);
+    let val = $(elem).val();
+    $temp.val(val).select();
+    document.execCommand('copy');
+    $temp.remove();
 }

@@ -22,6 +22,7 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 * Cypher ( AES encryption/Decryption ).
 * Tools ( json beautifier ).
 * Wiki ( helpful doc of **sql injection**, **Python**, **linux**, **networking**,  ).
+* Auto Form Filler ( only support email, text, tel, textarea, number -- support for other data types coming soon )
 
 # Notes
 * will auto copy your result to clipboard from after version 0.0.3

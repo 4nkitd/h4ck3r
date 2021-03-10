@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "h4ck3r",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "All in one Red Team Tool Kit",
   "browser_action": {
     "default_title": "h4ck3r",

@@ -1,23 +1,36 @@
 {
-	"name": "h4ck3r",
-	"version": "0.0.4",
-	"description": "All in one Red Team Tool Kit",
-	"browser_action": {
-		"default_title": "h4ck3r",
-		"default_popup": "index.html",
-		"default_icon": {
-			"16": "./assets/icons/icon-16.png",
-			"32": "./assets/icons/icon-32.png",
-			"48": "./assets/icons/icon-48.png",
-			"128": "./assets/icons/icon-128.png"
-		}
-	},
-	"icons": {
-		"16": "./assets/icons/icon-16.png",
-		"32": "./assets/icons/icon-32.png",
-		"48": "./assets/icons/icon-48.png",
-		"128": "./assets/icons/icon-128.png"
-	},
-	"manifest_version": 2,
-	"devtools_page": "devtools/devtools.html"
+  "manifest_version": 2,
+  "name": "h4ck3r",
+  "version": "0.0.4",
+  "description": "All in one Red Team Tool Kit",
+  "browser_action": {
+    "default_title": "h4ck3r",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "./assets/icons/icon-16.png",
+      "32": "./assets/icons/icon-32.png",
+      "48": "./assets/icons/icon-48.png",
+      "128": "./assets/icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "./assets/icons/icon-16.png",
+    "32": "./assets/icons/icon-32.png",
+    "48": "./assets/icons/icon-48.png",
+    "128": "./assets/icons/icon-128.png"
+  },
+  "devtools_page": "devtools/devtools.html",
+  "content_scripts": [
+    {
+      "css": [
+		  "injection/injection.css"
+	  ],
+      "js": [
+		"assets/js/jquery.js",
+		"injection/injection.js",
+		"injection/dragable.js"
+      ],
+      "matches": ["*://*/*"]
+    }
+  ]
 }

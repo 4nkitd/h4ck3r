@@ -20,7 +20,7 @@ var toolbar_html = `
             ${svg_2}
         </span>
       </div>
-      <div class="h4c3r_toolbar_item " id="header" >
+      <div class="h4c3r_toolbar_item " id="h4c3r_header" >
         <span class="h4c3r_drag" >
             ${svg_3}
         </span>

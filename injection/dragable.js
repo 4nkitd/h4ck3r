@@ -3,9 +3,9 @@ dragElement(document.getElementById("toolbar_id_"));
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById("header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById("header").onmousedown = dragMouseDown;
+    if (document.getElementById("h4c3r_header")) {
+        // if present, the h4c3r_header is where you move the DIV from:
+        document.getElementById("h4c3r_header").onmousedown = dragMouseDown;
     } else {
         // otherwise, move the DIV from anywhere inside the DIV:
         // elmnt.onmousedown = dragMouseDown;

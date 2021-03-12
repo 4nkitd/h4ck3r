@@ -1,8 +1,9 @@
 {
   "manifest_version": 2,
   "name": "h4ck3r",
-  "version": "0.0.5",
-  "description": "All in one Red Team Tool Kit",
+  "version": "0.0.6",
+  "description": "All in one Red Team Developer Tool Kit",
+
   "browser_action": {
     "default_title": "h4ck3r",
     "default_popup": "index.html",
@@ -13,6 +14,12 @@
       "128": "./assets/icons/icon-128.png"
     }
   },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
   "icons": {
     "16": "./assets/icons/icon-16.png",
     "32": "./assets/icons/icon-32.png",
@@ -22,13 +29,11 @@
   "devtools_page": "devtools/devtools.html",
   "content_scripts": [
     {
-      "css": [
-		  "injection/injection.css"
-	  ],
+      "css": ["injection/injection.css"],
       "js": [
-		"assets/js/jquery.js",
-		"injection/injection.js",
-		"injection/dragable.js"
+        "assets/js/jquery.js",
+        "injection/injection.js",
+        "injection/dragable.js"
       ],
       "matches": ["*://*/*"]
     }

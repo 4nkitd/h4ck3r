@@ -7,6 +7,7 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 [demo]( https://dagar.in/demo/h4ck3r/ ) thanks to [dagar.in](https://dagar.in/demo/h4ck3r/)
 ## Reason Of Existence
 
+1. Could find all required features in one extension.
 1. My fav Extension [HackBar](https://chrome.google.com/webstore/detail/hackbar/djmoeoifnlhjolebkehmpaocfnipknbh) moved to a paid model.
 1. Feels like a lot of work look for site because can't remember their domains.
 1. Can't find anything similar to [HackBar](https://chrome.google.com/webstore/detail/hackbar/djmoeoifnlhjolebkehmpaocfnipknbh) that's free & OpenSource
@@ -22,10 +23,14 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 * Cypher ( AES encryption/Decryption ).
 * Tools ( json beautifier ).
 * Wiki ( helpful doc of **sql injection**, **Python**, **linux**, **networking**,  ).
-* Auto Form Filler ( only support email, text, tel, textarea, number -- support for other data types coming soon )
+* Auto Form Filler ( doesn't support radio buttons. )
+* Auto Reload
+* Auto Form Cleaner 
 
 # Notes
 * will auto copy your result to clipboard from after version 0.0.3
+* password field will always be filled by ```#Admin123```
+* if you wan to un hide the toolbar ```h4ck3r.hide``` to ```0``` or ```false``` in localStorage of that site
 ## Store Availability
 * Firefox Extension: [here](https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/)
 * Chrome Extension: **Pending**

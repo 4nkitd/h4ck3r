@@ -15,9 +15,10 @@ var svg_5 = `<svg xmlns="http://www.w3.org/2000/svg" style="fill: red;" width="2
 var svg_6 = `
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.885 14.988l3.104-3.098.011.11c0 1.654-1.346 3-3 3l-.115-.012zm8.048-8.032l-3.274 3.268c.212.554.341 1.149.341 1.776 0 2.757-2.243 5-5 5-.631 0-1.229-.13-1.785-.344l-2.377 2.372c1.276.588 2.671.972 4.177.972 7.733 0 11.985-8.449 11.985-8.449s-1.415-2.478-4.067-4.595zm1.431-3.536l-18.619 18.58-1.382-1.422 3.455-3.447c-3.022-2.45-4.818-5.58-4.818-5.58s4.446-7.551 12.015-7.551c1.825 0 3.456.426 4.886 1.075l3.081-3.075 1.382 1.42zm-13.751 10.922l1.519-1.515c-.077-.264-.132-.538-.132-.827 0-1.654 1.346-3 3-3 .291 0 .567.055.833.134l1.518-1.515c-.704-.382-1.496-.619-2.351-.619-2.757 0-5 2.243-5 5 0 .852.235 1.641.613 2.342z"/></svg>`;
 
+
 var toolbar_html = `
 
-  <div class="h4c3r_toolbar">
+  
     <div class="h4c3r_toolbar_main" id="toolbar_id_">
       <div class="h4c3r_toolbar_item h4c3r_fill">
         <span>
@@ -50,20 +51,49 @@ var toolbar_html = `
 
     </div>
   </div>
-  </div>
+  
+  `;
+
+  var toolbar_hide = `
+
+    <div class="h4c3r_toolbar_main" id="toolbar_id_">
+      
+    
+      <div class="h4c3r_toolbar_item h4c3r_show">
+        <span class="" >
+            ${svg_6}
+        </span>
+      </div>
+
+      <div class="h4c3r_toolbar_item " id="h4c3r_header" >
+        <span class="h4c3r_drag" >
+            ${svg_3}
+        </span>
+      </div>
+
+
+    </div>
   
   `;
 
 
-(function () {
+function init() {
 
 
     var hide_toolbar = localStorage.getItem('h4ck3r.hide');
 
+    $('body').prepend(`<div class="h4c3r_toolbar"></div>`);
+
+
     if (hide_toolbar != true || hide_toolbar != 1) {
-        $('body').prepend(toolbar_html);
+        $('.h4c3r_toolbar').prepend(toolbar_html);
+    } else {
+        $('.h4c3r_toolbar').prepend(toolbar_hide);
     }
 
+    var elmnt = document.getElementById("toolbar_id_");
+    elmnt.style.top = localStorage.getItem('h4ck3r_position_top');
+    elmnt.style.left = localStorage.getItem('h4ck3r_position_bottom');
 
     var reload_config = localStorage.getItem('h4ck3r.reload');
 
@@ -91,6 +121,13 @@ var toolbar_html = `
 
     }
 
+}
+
+
+(function () {
+
+    init();
+
 })()
 
 
@@ -113,7 +150,31 @@ $('.h4c3r_reset').on('click', (e) => {
 
 $('.h4c3r_hide').on('click', (e) => {
 
+    console.log(e);
+
+
     localStorage.setItem('h4ck3r.hide',1);
+
+    $('.h4c3r_toolbar').remove();
+    init();
+
+    localStorage.setItem('h4ck3r_position_top', '9px')
+    localStorage.setItem('h4ck3r_position_bottom', '-65px')
+
+    window.location.reload()
+
+})
+
+$('.h4c3r_show').on('click', (e) => {
+
+    console.log(e);
+
+    localStorage.setItem('h4ck3r.hide', 0);
+
+    $('.h4c3r_toolbar').remove();
+    init();
+    window.location.reload()
+
 
 })
 

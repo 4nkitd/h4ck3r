@@ -1,0 +1,90 @@
+:root {
+    --hc-og: greenyellow;
+    --hc-p: #e84545;
+    --hc-s: #903749;
+    --hc-l: #53354a;
+    --hc-d: #2B2E4A;
+    --hc-w: #ffffff;
+}
+
+.bg-p {
+    background-color: var(--hc-p);
+}
+
+.bg-s {
+    background-color: var(--hc-s);
+}
+
+.bg-l {
+    background-color: var(--hc-l);
+}
+
+.bg-d {
+    background-color: var(--hc-d);
+}
+
+.bg-c {
+    background-color: var(--hc-w);
+}
+
+.text-p {
+    color: var(--hc-p);
+}
+
+.text-s {
+    color: var(--hc-s);
+}
+
+.text-l {
+    color: var(--hc-l);
+}
+
+.text-d {
+    color: var(--hc-d);
+}
+
+.text-c {
+    color: var(--hc-w);
+}
+
+.border-p {
+    border-color: var(--hc-p);
+}
+
+.border-s {
+    border-color: var(--hc-s);
+}
+
+.border-l {
+    border-color: var(--hc-l);
+}
+
+.border-d {
+    border-color: var(--hc-d);
+}
+
+.border-c {
+    border-color: var(--hc-w);
+}
+
+
+.text-fit {
+    width: fit-content;
+}
+
+nav .btn  {
+  box-shadow: 2px 3px 5px var(--hc-d);
+}
+
+nav .active {
+    background: var(--hc-d);
+    box-shadow: none;
+}
+
+
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; height: 250px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: var(--hc-s); }
+.null { color: magenta; }
+.key { color: var(--hc-p); }

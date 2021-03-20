@@ -1,133 +1,250 @@
 
-
 $(function() {
     
     $('.tab_btn').on('click',(elem)=>{
         
 
         var data_id = $(elem.target).data('id');
-        $('.bg-tab-content').hide();
+        $('.tab-content').hide();
         $('#'+data_id).show();
 
-        $('.active_tab').removeClass('active_tab')
+        $('.active').removeClass('active')
 
-        $(elem.target).addClass('active_tab');
+        $(elem.target).addClass('active');
 
     });
 
-    $('.base64_encode').on('click',(elem)=>{
-        var dec_text = $('#base64_data').val();        
-        $('#base64_data').val(window.btoa(dec_text));
-        copy_result_if_asked($('#base64_data'));
-    })
+    $('.rest_tab_btn').on('click', (elem) => {
 
-    $('.base64_decode').on('click',(elem)=>{
-        var enc_text = $('#base64_data').val();        
-        $('#base64_data').val(window.atob(enc_text));
-        copy_result_if_asked($('#base64_data'));
 
-    })
+        var data_id = $(elem.target).data('id');
+        $('.rest_tab_btn-content').hide();
+        $('#' + data_id).show();
 
-    $('.url_encode').on('click',(elem)=>{
-        var dec_text = $('#url_data').val();        
-        $('#url_data').val(window.encodeURI(dec_text));
-        copy_result_if_asked($('#url_data'));
-
-    })
-
-    $('.url_decode').on('click',(elem)=>{
-        var enc_text = $('#url_data').val();        
-        $('#url_data').val(window.decodeURI(enc_text));
-        copy_result_if_asked($('#url_data'));
-    })
-
-    $('.hex_encode').on('click',(elem)=>{
-        var dec_text = $('#hex_data').val();        
-        $('#hex_data').val(String2Hex(utf8.encode(dec_text)));
-        copy_result_if_asked($('#hex_data'));
-
-    })
-
-    $('.hex_decode').on('click',(elem)=>{
-        var enc_text = $('#hex_data').val();        
-        $('#hex_data').val(hex2a(enc_text));
-        copy_result_if_asked($('#hex_data'));
-    })
-
-    $('.hash_encode').on('click',(elem)=>{
-        var dec_text = $('#hash_data').val();  
-        var enc_type = $('#hash_select_enc').val();
-        var hash_salt = $('#hash_salt').val();
-
-        if(enc_type == undefined || enc_type == null || enc_type == ''){
-            alert('Select Encryption Type');
-            return false;
-        }
-
-        let enc_res = '';
         
-        if(enc_type == 'MD5'){
-            enc_res += CryptoJS.MD5(dec_text);
-        } else if (enc_type == 'SHA256'){
-            enc_res += CryptoJS.SHA256(dec_text);
-        } else if (enc_type == 'SHA512'){
-            enc_res += CryptoJS.SHA512(dec_text);
-        } else if (enc_type == 'SHA3'){
-            enc_res += CryptoJS.SHA3(dec_text);
-        } else if (enc_type == 'AES'){
-            enc_res = CryptoJS.AES.encrypt(dec_text,hash_salt);
-        }
-        if (hash_salt){
-            enc_res = hash_salt + enc_res;
-        }
-
-
-        $('#hash_data').val(enc_res);
-        copy_result_if_asked($('#hash_data'));
-
-    })
-
-    $('.hash_decode').on('click',(elem)=>{
-        var enc_text = $('#hash_data').val();  
-        var enc_type = $('#hash_select_enc').val();
-        var hash_salt = $('#hash_salt').val();  
-        
-        let enc_res = '';
-
-        if (enc_type == 'AES'){
-            enc_res = CryptoJS.AES.decrypt(enc_text,hash_salt);
-        } else {
-            alert('Works Only For AES');
-            return false;
-        }
-
-        $('.aes-alert').html('If text is not readable try hex decoding');
-        $('#hash_data').val(enc_res);
-        copy_result_if_asked($('#hash_data'));
-    })
-
-    $('.json_beautifier').on('click', (elem) => {
-        $('.json__retry').show();
-        var enc_text = $('#json_data').val();
-        try {
-            var j_obj = JSON.parse(enc_text);
-        } catch (error) {
-            $('#json_data').val('Invalid Json String.');
-            return;  
-        }
-        var str = JSON.stringify(j_obj, undefined, 4);
-        $('#json_data').hide();
-        $('#json_data_p').show();
-        $('#json_data_p').html(syntaxHighlight(str));
-    })
-
-    $('.json__retry').on('click', (elem) => {
-        $('.json__retry').hide();
-        $('#json_data').show();
-        $('#json_data_p').hide();
-    })
+    });
+  
     
 });
+
+function copyToClipboard(elem) {
+    let $temp = $('<input>');
+    $('body').append($temp);
+    let val = $(elem).val();
+    $temp.val(val).select();
+    document.execCommand('copy');
+    $temp.remove();
+}
+
+function encoding_en() {
+    var action = $('input[name=encoding_type]:checked').val();
+
+    switch (action) {
+        case "hex": {
+
+            var dec_text = $('#encoding_data').val();
+            $('#encoding_data').val(String2Hex(utf8.encode(dec_text)));
+
+        }
+            break;
+
+        case "base64": {
+
+            var dec_text = $('#encoding_data').val();
+            console.log({dec_text})
+            $('#encoding_data').val(window.btoa(dec_text));
+
+        }
+            break;
+
+        case "url": {
+
+            var dec_text = $('#encoding_data').val();
+            $('#encoding_data').val(window.encodeURI(dec_text));
+
+        }
+            break;
+
+        case "MD5": {
+
+            var dec_text = $('#encoding_data').val();
+            $('#encoding_data').val(CryptoJS.MD5(dec_text));
+
+        }
+            break;
+
+        default:
+            alert('Please Create a issue to add a new type @ github.com/4nkitd/h4ck3r');
+            break;
+    }
+
+}
+
+function encoding_de() {
+    var action = $('input[name=encoding_type]:checked').val();
+
+    switch (action) {
+        case "hex": {
+
+            var dec_text = $('#encoding_data').val();
+            $('#encoding_data').val(hex2a((dec_text)));
+
+        }
+            break;
+
+        case "base64": {
+
+            var dec_text = $('#encoding_data').val();
+            console.log({ dec_text })
+            $('#encoding_data').val(window.atob(dec_text));
+
+        }
+            break;
+
+        case "url": {
+
+            var dec_text = $('#encoding_data').val();
+            $('#encoding_data').val(window.decodeURI(dec_text));
+
+        }
+            break;
+
+        case "MD5": {
+
+            alert('Can only be done using a brute force rainbow comparison')
+
+        }
+            break;
+
+        default:
+            alert('Please Create a issue to add a new type @ github.com/4nkitd/h4ck3r');
+            break;
+    }
+
+}
+
+function decrypt_aes() {
+
+    var aes_data = $('#aes_data').val();
+    var aes_key = $('#aes_key').val();
+
+    var enc_res = CryptoJS.AES.decrypt(aes_data, aes_key);
+    $('#aes_data').val((enc_res));
+
+
+}
+
+function encrypt_aes() {
+
+    var aes_data = $('#aes_data').val();
+    var aes_key = $('#aes_key').val();
+
+    var enc_res = CryptoJS.AES.encrypt(aes_data, aes_key);
+    $('#aes_data').val((enc_res));
+
+}
+
+function copy_aes(e) {
+
+    $(e).html('Copied');
+    copyToClipboard($('#aes_data'));
+    setTimeout(() => {
+        $(e).html('Copy');
+    }, 300);
+}
+
+function copy_encoding(e) {
+
+    $(e).html('Copied');
+    copyToClipboard($('#encoding_data'));
+    setTimeout(()=>{
+        $(e).html('Copy');
+    }, 300);
+}
+
+function run_terminal() {
+
+    var code = $('#code').val();
+    
+    var results = '';
+
+    try {
+        
+        var F = new Function(code);
+        results = F();
+        
+    } catch (error) {
+        results = error;
+    }
+    
+    $('#code_results').val(results);
+
+}
+
+function copy_code(e) {
+
+    $(e).html('Copied');
+    copyToClipboard($('#code'));
+    setTimeout(() => {
+        $(e).html('Copy');
+    }, 300);
+}
+
+async function send_rest_api_request() {
+
+    try {
+
+
+
+        var req_type = $('#rest_type').val() ?? 'POST';
+
+        console.log({ req_type});
+        var req_headers = $('#rest_headers').val() ?? {};
+        req_headers = JSON.parse(req_headers.replace("'", '"').trim());
+
+        var data = $('#rest_body').val() ?? {};
+        data = JSON.stringify(JSON.parse(data.replace("'", '"').trim()));
+        var url = $('#rest_url').val();
+
+        var options = {
+            method: req_type,
+            cache: 'no-cache',
+            headers: req_headers,
+            body: data
+        };
+
+        console.log({ options});
+
+        fetch(url,options).then(async(resp) => {
+
+            var data = await resp.text();
+            console.log({data});
+            $('#rest_response').val(JSON.stringify(data) ?? data);
+
+        }).catch((err) => {
+
+            $('#rest_response').val(JSON.stringify(err) ?? err);
+
+        })
+        
+    } catch (error) {
+
+        $('#rest_response').val(JSON.stringify(error) ?? error);
+
+    }
+
+
+}
+
+function copy_rest_response(e) {
+
+    $(e).html('Copied');
+    copyToClipboard($('#rest_response'));
+    setTimeout(() => {
+        $(e).html('Copy');
+    }, 300);
+}
+
 
 function syntaxHighlight(json) {
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -148,32 +265,24 @@ function syntaxHighlight(json) {
     });
 }
 
-function copy_result_if_asked(target) {
-
-    var will_copy_val = $('#will_copy:checkbox:checked').length > 0;
+function json_beautify() {
     
-    if (true){
-
-        copyToClipboard(target);
-
-        $(target).find('label').insertAfter($('.extra'));
-        $('.extra').addClass('text-dark');
-        
-        setTimeout(() => {
-            $('.extra').removeClass('text-dark');
-            $('.extra').remove();
-        }, 1000);
-
+    var enc_text = $('#json_data').val();
+    try {
+        var j_obj = JSON.parse(enc_text.replace('\\', '').replace("'", '"'));
+    } catch (error) {
+        $('#json_results').val('Invalid Json String.');
+        return;
     }
+    var str = JSON.stringify(j_obj, undefined, 4);
+    $('#json_results').html(syntaxHighlight(str));
 
 }
 
-
-function copyToClipboard(elem) {
-    let $temp = $('<input>');
-    $('body').append($temp);
-    let val = $(elem).val();
-    $temp.val(val).select();
-    document.execCommand('copy');
-    $temp.remove();
+function copy_json(e) {
+    $(e).html('Copied');
+    copyToClipboard($('#json_data'));
+    setTimeout(() => {
+        $(e).html('Copy');
+    }, 300);
 }

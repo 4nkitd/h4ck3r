@@ -8,7 +8,7 @@ function dragElement(elmnt) {
         document.getElementById("h4c3r_header").onmousedown = dragMouseDown;
     } else {
         // otherwise, move the DIV from anywhere inside the DIV:
-        // elmnt.onmousedown = dragMouseDown;
+        elmnt.onmousedown = dragMouseDown;
     }
 
     function dragMouseDown(e) {

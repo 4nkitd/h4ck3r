@@ -1,3 +1,5 @@
+<meta name="google-site-verification" content="iU8cFON8HgbG58PSrpyYOIMii6GQQrQ-tcqRJezg8QA" />
+
 # ![Icon](./assets/icons/icon-32.png) h4ck3r
 A Browser Extension for chromium/firefox browser. Small tool for Developers & Pentesters.
 

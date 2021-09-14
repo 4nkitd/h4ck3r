@@ -35,5 +35,5 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 * if you wan to un hide the toolbar ```h4ck3r.hide``` to ```0``` or ```false``` in localStorage of that site
 ## Store Availability
 * Firefox Extension: [here](https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/)
-* Chrome Extension: **Pending**
+* Chrome Extension: [here](https://chrome.google.com/webstore/detail/h4ck3r/kmnlfjgamfnhcmpfnmgpiapacncdipad)
 * Edge Extension: [here](https://microsoftedge.microsoft.com/addons/detail/h4ck3r/eglafmgecldkdjfodkjgcpepkodndgdg)

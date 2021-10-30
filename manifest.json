@@ -28,11 +28,12 @@
     },
     "devtools_page": "devtools/devtools.html",
     "content_scripts": [{
-        "css": ["injection/injection.css"],
+        "css": [
+            "injection/injection.css"
+        ],
         "js": [
             "assets/js/jquery.js",
-            "injection/injection.js",
-            "injection/dragable.js"
+            "injection/injection.js"
         ],
         "matches": ["*://*/*"]
     }]

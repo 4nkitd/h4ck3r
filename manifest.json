@@ -33,6 +33,7 @@
         ],
         "js": [
             "assets/js/jquery.js",
+            "assets/js/faker.js",
             "injection/injection.js"
         ],
         "matches": ["*://*/*"]

@@ -1,54 +1,107 @@
-chrome.runtime.onMessage.addListener(
+const github = "https://github.com/4nkitd/h4ck3r";
+
+chrome.runtime?.onMessage.addListener(
     function(request, sender, sendResponse) {
-        if (request.message === "start") {
-            start();
-        } else if (request.message === "fillForm") {
+
+        if (request.message === "formFill") {
             fillForm();
+
         }
+
+        if (request.message === "devTools") {
+            triggerDevtoolsWindow();
+        }
+
+        if (request.message === "clearForm") {
+            cleanForm();
+        }
+
+        if (request.message === "clearCache") {
+
+            removeCache();
+
+        }
+
+        if (request.message === "reload") {
+
+            window.location.reload();
+
+        }
+
+        sendResponse(true);
+        return true;
     }
 );
 
-function start() {
-    alert("started");
+function openTab() {
+    window.open(url, '_blank').focus();
 }
 
 function fillForm() {
-    var randomName = faker.name.findName(); // Caitlyn Kerluke
-    var randomEmail = faker.internet.email(); // Rusty@arne.info
-    var randomCard = faker.helpers.createCard();
-
-    console.log({
-        randomName,
-        randomEmail,
-        randomCard,
-    })
+    fillInput();
+    fillTextarea();
+    selectOption();
+    fillRadio();
+    fillCheckbox();
 }
 
-setTimeout(() => {
-    fillForm()
-})
+function cleanForm() {
+    cleanInput();
+}
 
-function input() {
-    $("input").each(() => {
-        const type = $(this).attr('type');
+
+function cleanInput() {
+    $("input").each((index, elm) => {
+        $(elm).val("");
+    });
+}
+
+function fillRadio() {
+    $("input[type='radio']").each((index, elm) => {
+        $(elm).prop("checked", true);
+    });
+}
+
+function fillCheckbox() {
+    $("input[type='checkbox']").each((index, elm) => {
+        $(elm).prop("checked", true);
+    });
+}
+
+function selectOption(){
+    $("select").each((index, elm) => {
+        $($(elm).find('option')[0]).prop('selected', true);
+    });
+}
+
+function fillTextarea() {
+    $("textarea").each((index, elm) => {
+        $(elm).val(faker.lorem.paragraph());
+    });
+}
+
+function fillInput() {
+    $("input").each((index, elm) => {
+
+        const type = $(elm).attr('type');
 
         switch (type) {
             case 'button':
                 break;
             case 'checkbox':
-                $(this).val(true);
+                $(elm).val(true);
                 break;
             case 'color':
-                $(this).val(faker.internet.color());
+                $(elm).val(faker.internet.color());
                 break;
             case 'date':
-                $(this).val(faker.date.past());
+                $(elm).val(faker.date.past().toLocaleDateString("en-US"));
                 break;
             case 'datetime-local':
-                $(this).val(faker.date.recent())
+                $(elm).val(faker.date.recent())
                 break;
             case 'email':
-                $(this).val(getEmail());
+                $(elm).val(getEmail());
                 break;
             case 'file':
                 break;
@@ -57,48 +110,84 @@ function input() {
             case 'image':
                 break;
             case 'month':
-                $(this).val(faker.date.month());
+                $(elm).val(faker.date.month());
                 break;
             case 'number':
-                $(this).val(faker.number.random());
+                $(elm).val(faker.datatype.number());
                 break;
             case 'password':
-                $(this).val('#Pass@123');
+                $(elm).val('#Pass@123');
                 break;
             case 'radio':
-                $(this).prop("checked", true);
+                $(elm).prop("checked", true);
                 break;
             case 'range':
+                $(elm).val(faker.datatype.number())
                 break;
             case 'reset':
                 break;
             case 'search':
-                $(this).val(faker.lorem.word());
+                $(elm).val(faker.lorem.word());
                 break;
             case 'submit':
                 break;
             case 'tel':
-                $(this).val(faker.phone.phoneNumber());
+                $(elm).val(faker.phone.phoneNumber());
                 break;
             case 'text':
-                $(this).val(faker.lorem.word());
+                autoDetect(elm)
                 break;
             case 'time':
-                $(this).val(faker.time.recent());
+                $(elm).val(faker.time.recent());
                 break;
             case 'url':
-                $(this).val(faker.internet.url());
+                $(elm).val(faker.internet.url());
                 break;
             case 'week':
-                $(this).val(faker.date.weekday());
+                $(elm).val(faker.date.weekday());
                 break;
             default:
+                autoDetect(elm)
                 break;
         }
 
     });
 }
 
+function autoDetect(elm) {
+    $(elm).val(faker.lorem.word());
+}
+
 function getEmail() {
     return faker.lorem.slug() + "@yopmail.com";
+}
+
+function removeCache() {
+
+    console.log("cleaning cache");
+
+    chrome.browsingData.remove({
+        "origins": [window.location.origin]
+    }, {
+        "cacheStorage": true,
+        "cookies": true,
+        "fileSystems": true,
+        "indexedDB": true,
+        "localStorage": true,
+        "serviceWorkers": true,
+        "webSQL": true
+    }, callback);
+}
+
+function triggerDevtoolsWindow() {
+    console.log("opening devtools");
+    simulateKeyPress("F12");
+
+}
+
+function simulateKeyPress(character) {
+    jQuery.event.trigger({
+        type: 'keypress',
+        which: character.charCodeAt(0)
+    });
 }

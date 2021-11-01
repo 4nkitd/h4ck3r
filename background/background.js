@@ -1,3 +1,5 @@
+'use strict';
+
 chrome.runtime.onInstalled.addListener((reason) => {
     if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
         chrome.tabs.create({
@@ -5,3 +7,12 @@ chrome.runtime.onInstalled.addListener((reason) => {
         });
     }
 });
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log({ request });
+
+        sendResponse(true);
+        return true;
+    }
+);

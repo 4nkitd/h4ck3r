@@ -15,6 +15,11 @@
         }
     },
 
+    "permissions": [
+        "browsingData",
+        "activeTab"
+    ],
+
     "options_ui": {
         "page": "options/options.html",
         "open_in_tab": true
@@ -37,5 +42,11 @@
             "injection/injection.js"
         ],
         "matches": ["*://*/*"]
-    }]
+    }],
+
+    "background": {
+        "scripts": ["background/background.js"],
+        "persistent": false
+    }
+
 }

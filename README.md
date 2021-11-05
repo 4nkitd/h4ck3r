@@ -1,6 +1,9 @@
 # ![Icon](./assets/icons/icon-32.png) h4ck3r
 A Browser Extension for chromium/firefox browser. Small tool for Developers & Pentesters.
 
+# Important URL
+[Join Discord](https://discord.gg/gFcewQUA)
+
 ## Stats
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2F4nkitd%2Fh4ck3r&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://github.com/4nkitd)
 

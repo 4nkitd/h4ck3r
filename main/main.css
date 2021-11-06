@@ -7,6 +7,26 @@ body {
     height: 30px;
 }
 
+.landscape {
+    display: block !important;
+}
+.portrait{
+    display: none !important;
+}
+
+@media only screen and (max-width: 810px) {
+    .landscape {
+        display: none !important;
+    }
+    .portrait{
+        display: block !important;
+    }
+}
+
+.active {
+    display: block !important;
+}
+
 #top,
 #bottom,
 #left,

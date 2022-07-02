@@ -1,0 +1,26 @@
+name: Deploy to Edgeserver.io
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  zip-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.11.0"
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn
+      - name: Build
+        run: yarn build
+      - name: Edgeserver Upload
+        uses: lvkdotsh/edgeserver-action@master
+        with:
+          app_id: "66245733254172672"
+          server: https://api.edgeserver.io
+          token: ${{ secrets.SIGNAL_TOKEN }}
+          directory: ./

@@ -1,10 +1,10 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "h4ck3r",
     "version": "1.0.0",
     "description": "All in one Red Team Developer Tool Kit",
 
-    "browser_action": {
+    "action": {
         "default_title": "h4ck3r",
         "default_popup": "./popup/popup.html",
         "default_icon": {
@@ -17,7 +17,10 @@
 
     "permissions": [
         "browsingData",
-        "activeTab"
+        "activeTab",
+        "tabs",
+        "storage",
+        "cookies"
     ],
 
     "options_ui": {
@@ -45,8 +48,7 @@
     }],
 
     "background": {
-        "scripts": ["background/background.js"],
-        "persistent": false
+        "service_worker": "background/background.js"
     }
 
 }

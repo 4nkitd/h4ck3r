@@ -1,37 +1,76 @@
+var web;
+
+if (typeof browser !== 'undefined') {
+    web = browser;
+}
+
+if (typeof chrome !== 'undefined') {
+    web = chrome;
+}
+
 const github = "https://github.com/4nkitd/h4ck3r";
 
-chrome.runtime?.onMessage.addListener(
-    function(request, sender, sendResponse) {
-
-        if (request.message === "formFill") {
-            fillForm();
-
+setTimeout(() => {
+    web.runtime?.onMessage.addListener(
+        function (request, sender, sendResponse) {
+    
+            if (request.message === "formFill") {
+                fillForm();
+    
+            }
+    
+            if (request.message === "devTools") {
+                triggerDevtoolsWindow();
+            }
+    
+            if (request.message === "clearForm") {
+                cleanForm();
+            }
+    
+            if (request.message === "clearCache") {
+    
+                removeCache();
+    
+            }
+    
+            if (request.message === "reload") {
+    
+                reload();
+    
+            }
+    
+            sendResponse(true);
+            return true;
         }
+    );
+}, 300);
 
-        if (request.message === "devTools") {
-            triggerDevtoolsWindow();
-        }
+setInterval(() => {
 
-        if (request.message === "clearForm") {
-            cleanForm();
-        }
+    const result = localStorage.getItem('reload')
+    
+    if (result) {
 
-        if (request.message === "clearCache") {
+        console.log('cron-3000');
 
-            removeCache();
-
-        }
-
-        if (request.message === "reload") {
-
+        setTimeout(() => {
             window.location.reload();
-
-        }
-
-        sendResponse(true);
-        return true;
+        }, result);
     }
-);
+
+},9000);
+
+
+function reload() {
+    console.log("reloading");
+    const result = localStorage.getItem('reload')
+    if (result) {
+        return localStorage.removeItem('reload');
+    } else {
+        return localStorage.setItem('reload', 3000);
+    }
+
+}
 
 function openTab() {
     window.open(url, '_blank').focus();
@@ -48,7 +87,6 @@ function fillForm() {
 function cleanForm() {
     cleanInput();
 }
-
 
 function cleanInput() {
     $("input").each((index, elm) => {
@@ -68,7 +106,7 @@ function fillCheckbox() {
     });
 }
 
-function selectOption(){
+function selectOption() {
     $("select").each((index, elm) => {
         $($(elm).find('option')[0]).prop('selected', true);
     });
@@ -164,25 +202,30 @@ function getEmail() {
 
 function removeCache() {
 
-    console.log("cleaning cache");
+    localStorage.clear();
+    sessionStorage.clear();
 
-    chrome.browsingData.remove({
-        "origins": [window.location.origin]
-    }, {
-        "cacheStorage": true,
-        "cookies": true,
-        "fileSystems": true,
-        "indexedDB": true,
-        "localStorage": true,
-        "serviceWorkers": true,
-        "webSQL": true
-    }, callback);
+    // clear cookies
+    deleteAllCookies();
+
+    // clear cache
+    window.location.reload(true);
+
+}
+
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
 
 function triggerDevtoolsWindow() {
     console.log("opening devtools");
-    simulateKeyPress("F12");
-
 }
 
 function simulateKeyPress(character) {

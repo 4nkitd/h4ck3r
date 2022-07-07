@@ -1,3 +1,13 @@
+var web;
+
+if (typeof browser !== 'undefined') {
+    web = browser;
+}
+
+if (typeof chrome !== 'undefined') {
+    web = chrome;
+}
+
 const githubUrl = "https://4nkitd.github.io/h4ck3r/";
 
 function sendMsg(message) {
@@ -25,7 +35,11 @@ function github() {
 document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("formFill").addEventListener("click", sendMsg("formFill"));
-    document.getElementById("devTools").addEventListener("click", sendMsg("devTools"));
+    document.getElementById("devTools").addEventListener("click", () => {
+
+        web.runtime.openOptionsPage();
+
+    });
     document.getElementById("github").addEventListener("click", github);
 
     document.getElementById("clearForm").addEventListener("click", sendMsg("clearForm"));

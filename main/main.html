@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>h4ck3r</title>
 
-    <link rel="shortcut icon" href="/assets/icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/icons/images/icon.png" type="image/x-icon">
 
     <!-- importing css -->
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="./main.css">
+
     <!-- importing js -->
     <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="./main.js"></script>
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+
 </head>
 
 <body class="p-2">
@@ -25,133 +27,146 @@
     <div id="top"></div>
     <div id="bottom"></div>
 
-    <div class="landscape">
+    <div class="container-fluid">
 
-        <div class="col-12 justify-content-center d-flex">
+        <nav class="nav ">
+            <li class="nav-item">
+                <a data-id="encrypt" class="btn m-2 btn-theme tab_btn active_tab" title="Encryption / Decryption">
+                    <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="Encryption"
+                        srcset="/assets/images/fingerprint.png">
+                    Encryption
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="terminal" class="btn m-2 btn-theme tab_btn " title="Terminal">
+                    <img class="img-fluid img-3" src="/assets/images/terminal.png" alt="Terminal"
+                        srcset="/assets/images/terminal.png">
+                    Terminal
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="encoding" class="btn m-2 btn-theme tab_btn " title="Encoding / Decoding">
+                    <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="Encoding"
+                        srcset="/assets/images/encode.png">
+                    Encoding
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="beautify" class="btn m-2 btn-theme tab_btn " title="Beautify">
+                    <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="Beautify"
+                        srcset="/assets/images/beauty.png">
+                    Beautify
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="api" class="btn m-2 btn-theme tab_btn " title="API">
+                    <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="API"
+                        srcset="/assets/images/api.png">
+                    API
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="cli" class="btn m-2 btn-theme tab_btn " title="Cli Cmd's">
+                    <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="Cli Cmd's"
+                        srcset="/assets/images/terminal.png">
+                    Cli Cmd's
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="sql_injection" class="btn m-2 btn-theme tab_btn " title="SQL Injection">
+                    <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="SQL Injection"
+                        srcset="/assets/images/beauty.png">
+                    SQL Injection
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-id="github" class="btn m-2 btn-theme tab_btn " title="Github">
+                    <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="Github"
+                        srcset="/assets/images/github.png">
+                    Github
+                </a>
+            </li>
 
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="f_encrypt" title="Encryption / Decryption">
-                <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="Encryption" srcset="/assets/images/fingerprint.png">
-                <span>Encryption</span>
-            </div>
+        </nav>
 
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="top" title="Terminal - Js">
-                <img class="img-fluid img-3" src="/assets/images/terminal.png" alt="Terminal" srcset="/assets/images/terminal.png">
-                <span>Terminal</span>
-            </div>
+        <br>
 
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="f_encode" title="Encoding">
-                <img class="img-fluid img-3" src="/assets/images/encode.png" alt="Encoding" srcset="/assets/images/encode.png">
-                <span>Encoding</span>
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="f_api" title="API">
-                <img class="img-fluid img-3" src="/assets/images/api.png" alt="API" srcset="/assets/images/api.png">
-                <span>API</span>
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="f_beautify" title="API">
-                <img class="img-fluid img-3" src="/assets/images/beauty.png" alt="Beautify" srcset="/assets/images/beauty.png">
-                <span>Beautify</span>
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="f_terminal" title="API">
-                <img class="img-fluid img-3" src="/assets/images/terminal.png" alt="Cli Cmd's" srcset="/assets/images/terminal.png">
-                <span>Cli Cmd's</span>
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="top" title="API">
-                <img class="img-fluid img-3" src="/assets/images/injection.png" alt="SQL Injection" srcset="/assets/images/injection.png">
-                <span>SQL Injection</span>
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="f_github" title="API">
-                <img class="img-fluid img-3" src="/assets/images/github.png" alt="Github" srcset="/assets/images/github.png">
-                <span>Github</span>
-            </div>
-
-        </div>
-
-        <div id="f_github" class="mx-2 justify-content-center p-2 h-100 ">
-
+        <div id="home" class="mx-2 justify-content-center p-2 h-100 bg-tab-content">
             <center>
                 <h1> <span> github@4nkitd / h4ck3r </span> </h1>
-                <img class="d-block" max-height="200px" src="/assets/images/g-large.png " alt="Github " srcset="/assets/images/g-large.png ">
+                <img class="d-block" max-height="200px" src="/assets/images/g-large.png " alt="Github "
+                    srcset="/assets/images/g-large.png ">
             </center>
+        </div>
+
+        <div style="display: none;" id="encrypt"
+            class="mx-2 justify-content-center border-theme p-2 h-100 bg-tab-content">
+
+            <div class="col-2 border-theme mx-auto h-100 ">
+                <select id="do_encrypt_options" class="btn m-2 btn-theme col-11">
+                    <option value="md5">MD5</option>
+                    <option value="aes">AES</option>
+                    <option value="sha1">SHA1</option>
+                    <option value="sha256">SHA256</option>
+                    <option value="sha3">SHA3</option>
+                    <option value="bcrypt">BCRYPT</option>
+                </select>
+                <button class="btn m-2 btn-theme col-11 do_encrypt"> Encrypt </button>
+                <button class="btn m-2 btn-theme col-11 do_decrypt"> Decrypt </button>
+            </div>
+            <div class="col-9 h-100 ">
+                <textarea id="do_encrypt_arena" placeholder="Encrypt / Decrypt"
+                    class="bg-theme form-control border-theme" name="" id="" cols="30" rows="7"></textarea>
+            </div>
 
         </div>
 
-        <div id="f_encode" class="mx-2 justify-content-center d-flex border-theme p-2 h-100 d-none">
+        <div style="display: none;" id="encoding"
+            class="mx-2 justify-content-center border-theme p-2 h-100 bg-tab-content">
 
             <div class="col-2 border-theme mx-auto h-100 ">
                 <select name="" id="" class="btn m-2 btn-theme col-11">
-                <option value="">BASE64</option>
-                <option value="">HEX</option>
-                <option value="">URL</option>
-            </select>
+                    <option value="">BASE64</option>
+                    <option value="">HEX</option>
+                    <option value="">URL</option>
+                </select>
                 <button class="btn m-2 btn-theme col-11"> Encode </button>
                 <button class="btn m-2 btn-theme col-11"> Decode </button>
             </div>
             <div class="col-9 h-100 ">
-                <textarea placeholder="Encode / Decode" class="bg-theme form-control border-theme" name="" id="" cols="30" rows="7"></textarea>
+                <textarea placeholder="Encode / Decode" class="bg-theme form-control border-theme" name="" id=""
+                    cols="30" rows="7"></textarea>
             </div>
 
         </div>
 
-        <br>
-
-        <div id="f_encrypt" class="mx-2 justify-content-center d-flex border-theme p-2 h-100 d-none">
-
-            <div class="col-2 border-theme mx-auto h-100 ">
-                <select name="" id="" class="btn m-2 btn-theme col-11">
-                <option value="">MD5</option>
-                <option value="">AES</option>
-                <option value="">SHA1</option>
-                <option value="">SHA256</option>
-                <option value="">SHA3</option>
-                <option value="">BCRYPT</option>
-            </select>
-                <button class="btn m-2 btn-theme col-11"> Encrypt </button>
-                <button class="btn m-2 btn-theme col-11"> Decrypt </button>
-            </div>
-            <div class="col-9 h-100 ">
-                <textarea placeholder="Encrypt / Decrypt" class="bg-theme form-control border-theme" name="" id="" cols="30" rows="7"></textarea>
-            </div>
-
-        </div>
-
-        <br>
-
-        <div id="f_terminal" class="mx-2 justify-content-center d-flex border-theme p-2 h-100 d-none">
-
+        <div style="display: none;" id="terminal"
+            class="mx-2 justify-content-center border-theme p-2 h-100 bg-tab-content">
             <div class="col-2 border-theme mx-auto h-100 ">
 
                 <button class="btn m-2 btn-theme col-11"> Go </button>
                 <button class="btn m-2 btn-theme col-11"> Clear </button>
             </div>
             <div class="col-9 h-100 ">
-                <textarea placeholder="Code..." class="bg-theme form-control border-theme" name="" id="" cols="30" rows="7"></textarea>
+                <textarea placeholder="Code..." class="bg-theme form-control border-theme" name="" id="" cols="30"
+                    rows="7"></textarea>
             </div>
-
         </div>
 
-        <br>
-
-        <div  id="f_beautify" class="mx-2 justify-content-center d-flex border-theme p-2 h-100 d-none">
-
+        <div style="display: none;" id="beautify"
+            class="mx-2 justify-content-center border-theme p-2 h-100 bg-tab-content">
             <div class="col-2 border-theme mx-auto h-100 ">
 
                 <button class="btn m-2 btn-theme col-11"> Beautify </button>
                 <button class="btn m-2 btn-theme col-11"> Clear </button>
             </div>
             <div class="col-9 h-100 ">
-                <textarea placeholder="json..." class="bg-theme form-control border-theme" name="" id="" cols="30" rows="7"></textarea>
+                <textarea placeholder="json..." class="bg-theme form-control border-theme" name="" id="" cols="30"
+                    rows="7"></textarea>
             </div>
-
         </div>
 
-        <br>
-
-        <div  id="f_api" class="mx-2 justify-content-center d-flex border-theme p-2 h-100 d-none">
+        <div style="display: none;" id="api" class="mx-2 justify-content-center border-theme p-2 h-100 bg-tab-content">
 
             <div class="col-2 border-theme mx-auto h-100 ">
 
@@ -162,134 +177,40 @@
             <div class="col-9 h-100 ">
                 <div class="col-12">
                     <select name="" class="btn m-2 btn-theme col-2" id="">
-                    <option value="">GET</option>
-                    <option value="">POST</option>
-                    <option value="">OPTION</option>
-                    <option value="">PUT</option>
-                </select>
+                        <option value="">GET</option>
+                        <option value="">POST</option>
+                        <option value="">OPTION</option>
+                        <option value="">PUT</option>
+                    </select>
                     <input type="url" name="" id="" class="btn bg-theme border-theme col-6 " placeholder="Url ">
                     <button name=" " id=" " class="btn m-2 btn-theme col-3 ">Go</button>
                 </div>
-                <textarea placeholder="json..." class="bg-theme form-control border-theme mt-2 " name=" " id=" " cols="30" rows="4"></textarea>
+                <textarea placeholder="json..." class="bg-theme form-control border-theme mt-2 " name=" " id=" "
+                    cols="30" rows="4"></textarea>
             </div>
 
         </div>
+    </div>
+
+    <div style="display: none;" id="cli" class="mx-2 justify-content-center border-theme p-2 h-100 bg-tab-content">
+
+
 
     </div>
 
-    <div class="portrait">
+    <div style="display: none;" id="sql_injection"
+        class="mx-2 justify-content-center border-theme p-2 h-100 bg-tab-content">
 
-        <div class="col-12 justify-content-center">
 
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="top" title="Encryption / Decryption">
-                <img class="img-fluid img-3" src="/assets/images/fingerprint.png" alt="Encryption" srcset="/assets/images/fingerprint.png">
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="top" title="Terminal - Js">
-                <img class="img-fluid img-3" src="/assets/images/terminal.png" alt="Terminal" srcset="/assets/images/terminal.png">
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="encoder" title="Encoding">
-                <img class="img-fluid img-3" src="/assets/images/encode.png" alt="Encoding" srcset="/assets/images/encode.png">
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="top" title="API">
-                <img class="img-fluid img-3" src="/assets/images/api.png" alt="API" srcset="/assets/images/api.png">
-            </div>
-
-            <div class="btn m-2 btn-theme " data-bs-toggle="tooltip" data-goto="top" title="API">
-                <img class="img-fluid img-3" src="/assets/images/beauty.png" alt="Beautify" srcset="/assets/images/beauty.png">
-            </div>
-
-        </div>
-
-        <div  id="homer" class="mx-2 justify-content-center p-2 py-4 h-100 block">
-
-            <center>
-                <img class="d-block" max-height="200px" src="/assets/images/g-large.png " alt="Github " srcset="/assets/images/g-large.png ">
-                <h1> <span> github@4nkitd </br> h4ck3r </span> </h1>
-            </center>
-
-        </div>
-
-        <div id="encoder" class="mx-2 justify-content-center d-flex border-theme h-100 block"  style="display: none  !important;">
-
-            <div class="col-12 border-theme mx-auto h-100 ">
-                <select name="" id="" class="btn m-2 btn-theme col-5">
-                    <option value="">BASE64</option>
-                    <option value="">HEX</option>
-                    <option value="">URL</option>
-                </select>
-                <button class="btn m-2 btn-theme col-5"> Go </button>
-                </br>
-                <textarea placeholder="Encode / Decode" class="bg-theme form-control border-theme" name="" id="" cols="30" rows="25"></textarea>
-            </div>
-
-        </div>
-
-        <div class="mx-2 justify-content-center d-flex border-theme h-100 block" id="encrypter"  style="display: none  !important;" >
-
-            <div class="col-12 border-theme mx-auto h-100 ">
-                <select name="" id="" class="btn m-2 btn-theme col-5">
-                    <option value="">MD5</option>
-                    <option value="">SHA1</option>
-                    <option value="">SHA256</option>
-                    <option value="">SHA3</option>
-                </select>
-                <button class="btn m-2 btn-theme col-5"> Go </button>
-                </br>
-                <textarea placeholder="Encrypt / Decrypt" class="bg-theme form-control border-theme" name="" id="" cols="30" rows="25"></textarea>
-            </div>
-
-        </div>
-
-        <div class="mx-2 justify-content-center d-flex border-theme h-100 block" id="poster"  style="display: none  !important;">
-
-            <div class="col-12 border-theme mx-auto h-100 ">
-
-                <button class="btn m-2 btn-theme col-5"> Clear </button>
-                <button class="btn m-2 btn-theme col-5"> Go </button>
-                </br>
-                <textarea placeholder="Encrypt / Decrypt" class="bg-theme form-control border-theme" name="" id="" cols="30" rows="20"></textarea>
-            </div>
-
-        </div>
-
-        <div class="mx-2 justify-content-center d-flex border-theme h-100 block" id="beautifier"  style="display: none  !important;">
-
-            <div class="col-12 border-theme mx-auto h-100 ">
-
-                <button class="btn m-2 btn-theme col-5"> Clear </button>
-                <button class="btn m-2 btn-theme col-5"> Beautify </button>
-                </br>
-                <textarea placeholder="Encrypt / Decrypt" class="bg-theme form-control border-theme" name="" id="" cols="30" rows="20"></textarea>
-            </div>
-
-        </div>
-
-        <div class="mx-2 justify-content-center d-flex border-theme h-100 "  style="display: none  !important;">
-
-            <div class="col-12 border-theme mx-auto h-100 ">
-                <select name="" id="" class="btn m-2 btn-theme col-5">
-                    <option value="">MD5</option>
-                    <option value="">SHA1</option>
-                    <option value="">SHA256</option>
-                    <option value="">SHA3</option>
-                </select>
-                <button class="btn m-2 btn-theme col-5"> Go </button>
-                </br>
-                <input type="url" name="" id="" class="btn bg-theme border-theme col-12 " placeholder="Url ">
-                </br>
-                <button class="btn m-2 btn-theme col-3">Header</button>
-                <button class="btn mr-4 btn-theme col-3">Body</button>
-                <button class="btn btn-theme col-4">Response</button>
-                </br>
-                <textarea placeholder="Encrypt / Decrypt" class="bg-theme form-control border-theme" name="" id="" cols="30" rows="20"></textarea>
-            </div>
-
-        </div>
 
     </div>
+
+    </div>
+
+    <script src="/assets/js/crypto.js"></script>
+    <script src="/assets/js/utf8.js"></script>
+    <script src="/assets/js/functions.js"></script>
+    <script src="/assets/js/app.js"></script>
 
 </body>
 

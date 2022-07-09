@@ -3,27 +3,41 @@ $(function() {
     
     $('.tab_btn').on('click',(elem)=>{
         
-
         var data_id = $(elem.target).data('id');
-        $('.tab-content').hide();
+
+        if(data_id == 'github'){
+            return;
+        }
+
+        $('.bg-tab-content').removeClass('d-flex');
+        $('.bg-tab-content').hide();
         $('#'+data_id).show();
+        $('#'+data_id).addClass('d-flex');
 
-        $('.active').removeClass('active')
-
-        $(elem.target).addClass('active');
+        // $('.activate').removeClass('activate')
+        // $(elem.target).addClass('activate');
 
     });
 
     $('.rest_tab_btn').on('click', (elem) => {
 
-
         var data_id = $(elem.target).data('id');
         $('.rest_tab_btn-content').hide();
         $('#' + data_id).show();
 
-        
     });
   
+    $('.do_encrypt').on('click',(elem)=>{
+
+        var do_encrypt_arena = $('#do_encrypt_arena').val();        
+        var do_encrypt_options = $('#do_encrypt_options').val();        
+        
+        console.log(do_encrypt_arena, do_encrypt_options);
+
+        $('#do_decrypt_arena').val(window.encodeURI(do_encrypt_arena));
+        
+
+    })
     
 });
 

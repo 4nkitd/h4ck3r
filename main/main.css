@@ -3,6 +3,13 @@ body {
     background: #1C1919;
 }
 
+.lcontent {
+    display: none !important;
+}
+.lcontent.active {
+    display: block !important;
+}
+
 .img-3 {
     height: 30px;
 }
@@ -23,8 +30,17 @@ body {
     }
 }
 
-.active {
-    display: block !important;
+.activate {
+    display: flex !important;
+    background: black;
+}
+
+.nav-item {
+    flex-grow: 1;
+}
+
+.nav-item.a{
+    gap: 10px;
 }
 
 #top,

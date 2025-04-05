@@ -1,10 +1,10 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "h4ck3r",
   "version": "0.0.8",
   "description": "All in one Red Team Developer Tool Kit",
 
-  "browser_action": {
+  "action": {
     "default_title": "h4ck3r",
     "default_popup": "index.html",
     "default_icon": {
@@ -26,7 +26,23 @@
     "48": "./assets/icons/icon-48.png",
     "128": "./assets/icons/icon-128.png"
   },
+
   "devtools_page": "devtools/devtools.html",
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "*://*/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
   "content_scripts": [
     {
       "css": ["injection/injection.css"],

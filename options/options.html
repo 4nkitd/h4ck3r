@@ -64,6 +64,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a data-id="toolbar_settings" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    Toolbar Settings
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="https://github.com/4nkitd/" target="_blank" class="nav-link  btn m-2 btn btn-sm btn-primary">
                     Github
                 </a>
@@ -332,6 +337,45 @@
 
             </div>
 
+            <div style="display: none;" id="toolbar_settings" class="border border-success bg-tab-content rounded p-3">
+                <h4 class="text-success">Toolbar Button Visibility</h4>
+                <p class="text-muted">Select which buttons appear on the injected toolbar.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="toolbar_fill_toggle" checked>
+                    <label class="form-check-label text-light" for="toolbar_fill_toggle">
+                        Fill Forms Button
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="toolbar_reset_toggle" checked>
+                    <label class="form-check-label text-light" for="toolbar_reset_toggle">
+                        Reset Forms Button
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="toolbar_hide_toggle" checked>
+                    <label class="form-check-label text-light" for="toolbar_hide_toggle">
+                        Hide/Show Toolbar Button
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="toolbar_reload_toggle" checked>
+                    <label class="form-check-label text-light" for="toolbar_reload_toggle">
+                        Hot Reload Button
+                    </label>
+                </div>
+                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="toolbar_needed_toggle" checked>
+                    <label class="form-check-label text-light" for="toolbar_needed_toggle">
+                        Enable Toolbar Injection
+                    </label>
+                </div>
+                <button id="save_toolbar_settings" class="btn btn-primary mt-3">Save Settings</button>
+                <button id="reset_toolbar_position" class="btn btn-warning mt-3 ms-2">Reset & Show Toolbar</button> <!-- Added Reset Button -->
+                <div id="toolbar_settings_saved_message" class="text-success mt-2" style="display: none;">Settings saved!</div>
+                <div id="toolbar_reset_message" class="text-info mt-2" style="display: none;">Toolbar position reset. Reload target pages to see the change.</div> <!-- Added Reset Message -->
+            </div>
+
         </div>
 
 
@@ -342,6 +386,7 @@
     <script src="./../assets/js/utf8.js"></script>
     <script src="./../assets/js/functions.js"></script>
     <script src="./../assets/js/app.js"></script>
+    <script src="./options.js"></script>
 
 </body>
 

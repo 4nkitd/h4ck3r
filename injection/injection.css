@@ -1,50 +1,156 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+/* Modern and minimal design updates */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-.h4c3r_toolbar {
-    margin-bottom: 0px !important;
-    position: relative;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
 }
 
-.h4c3r_toolbar_main {
-    top: 10px;
-    left: 10px;
+.h4ckr-toolbar {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 8px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
     position: fixed;
-    z-index: 9999;
-    background-image: linear-gradient(to right, #d13939, #cd5a16, #be7900, #a49500, #80ad08, #5eaa33, #3ba64d, #00a062, #00825d, #006552, #0e4842, #1a2d2c);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.h4ckr-hot-reload {
+    color: #fff !important;
+}
+/* Removed background gradient and updated styles for a cleaner look */
+.h4ckr-toolbar-main {
+    background-color: #1f1f1f; /* Solid background color */
+    background-image: none; /* Removed gradient */
+    border: solid 1px #333;
+    border-radius: 9px;
+    width: 230px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    gap: 5px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 1px #000;
-    border-radius: 28px;
-    box-shadow: 1px 1px 6px rgba(black,0.13);
-    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
+}
+
+/* Updated button styles for better fit and appearance */
+.h4ckr-toolbar-item {
+    padding: 6px; /* Reduced padding for better fit */
+    font-size: 12px; /* XS small size */
+    display: flex;
+    align-items: center;
     justify-content: center;
-    border-right: 1px solid #000;
+    border-radius: 6px; /* Slightly smaller radius */
+    background: #2a2a2a;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.h4ckr-toolbar-item:hover {
+    background: #3a3a3a;
+    transform: scale(1.05);
+}
+
+.h4ckr-toolbar-item span {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.h4ckr-toolbar-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 .svg {
     fill: #000;
 }
 
-.h4c3r_toolbar_item {
-    padding: 5px 10px;
-    width: 50px;
-    text-align: center;
-}
-
-.h4c3r_fill {
+.h4ckr-fill {
     color: red;
 }
 
-.h4c3r_reset {
+.h4ckr-reset {
     color: yellow;
 }
 
-
-.h4c3r_drag {
+.h4ckr-drag {
     color: green;
 }
 
 #header {
     cursor: move !important;
+}
+
+/* Updated button styles */
+.h4ckr-button {
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.h4ckr-button:hover {
+    background: linear-gradient(135deg, #388e3c, #2e7d32);
+    transform: scale(1.05);
+}
+
+/* Input field styles */
+.h4ckr-input, .h4ckr-textarea {
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    background: #1e1e1e;
+    color: #e0e0e0;
+    transition: border-color 0.3s ease;
+}
+
+.h4ckr-input:focus, .h4ckr-textarea:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+/* Icon styles */
+.h4ckr-toolbar-item svg {
+    fill: #ffffff;
+    width: 20px;
+    height: 20px;
+    transition: fill 0.3s ease;
+}
+
+.h4ckr-toolbar-item:hover svg {
+    fill: #b3b3b3;
+}
+
+.h4ckr-toolbar-main--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }

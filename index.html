@@ -54,6 +54,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a data-id="jwt" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
+                    JWT Decoder
+                </a>
+            </li>
+            <li class="nav-item">
                 <a data-id="cmdlib" class="nav-link tab_btn  btn m-2 btn btn-sm btn-dark">
                     cmd lib
                </a>
@@ -212,6 +217,30 @@
 
                 </div>
 
+            </div>
+
+            <div style="display: none;" id="jwt" class="border border-success bg-tab-content rounded p-3">
+                <div class="row mx-md-4 mx-sm-1">
+                    <div class="col-md-12 p-2">
+                        <label for="jwt_data" class="text-success">JWT Token</label>
+                        <textarea id="jwt_data" rows="4" class="form-control border border-success"
+                            placeholder="Paste JWT Token here"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <button class="btn btn-primary btn-sm mx-auto jwt_decode">Decode JWT</button>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <label class="text-success">Decoded Header:</label>
+                        <pre id="jwt_header_output" class="bg-light rounded border border-secondary p-2"></pre>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <label class="text-success">Decoded Payload:</label>
+                        <pre id="jwt_payload_output" class="bg-light rounded border border-secondary p-2"></pre>
+                    </div>
+                     <div class="col-md-12 mt-3">
+                        <p id="jwt_error" class="text-danger" style="display: none;"></p>
+                    </div>
+                </div>
             </div>
 
             <div style="display: none;" id="cmdlib"

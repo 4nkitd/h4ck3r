@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "h4ck3r",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "All in one Red Team Developer Tool Kit",
 
   "action": {

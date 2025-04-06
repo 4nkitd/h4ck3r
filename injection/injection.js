@@ -185,7 +185,11 @@ const H4ck3rToolbar = {
         if (settings.jwtDecoder) {
             html += `
               <div class="h4ckr-toolbar-item h4ckr-jwt_decoder">
-                <span>${svg_5}</span>
+                <span>
+                  <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                  </svg>
+                </span>
               </div>`;
         }
 
@@ -596,3 +600,77 @@ function take_screenshot() {
     $('.h4ckr-toolbar').show();
 
 }
+
+// Enhanced JWT Decoder to automatically fetch tokens from localStorage, sessionStorage, and cookies
+$('.h4ckr-jwt_decoder').on('click', () => {
+    let token = null;
+
+    // Check localStorage for JWT tokens
+    for (let key in localStorage) {
+        if (localStorage.hasOwnProperty(key) && localStorage[key].includes('.')) {
+            const parts = localStorage[key].split('.');
+            if (parts.length === 3) {
+                token = localStorage[key];
+                console.log(`JWT found in localStorage under key: ${key}`);
+                break;
+            }
+        }
+    }
+
+    // Check sessionStorage for JWT tokens if not found in localStorage
+    if (!token) {
+        for (let key in sessionStorage) {
+            if (sessionStorage.hasOwnProperty(key) && sessionStorage[key].includes('.')) {
+                const parts = sessionStorage[key].split('.');
+                if (parts.length === 3) {
+                    token = sessionStorage[key];
+                    console.log(`JWT found in sessionStorage under key: ${key}`);
+                    break;
+                }
+            }
+        }
+    }
+
+    // Check cookies for JWT tokens if not found in storage
+    if (!token) {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const value = cookie.split('=')[1]?.trim();
+            if (value && value.includes('.')) {
+                const parts = value.split('.');
+                if (parts.length === 3) {
+                    token = value;
+                    console.log(`JWT found in cookies: ${cookie}`);
+                    break;
+                }
+            }
+        }
+    }
+
+    // If no token is found, notify the user
+    if (!token) {
+        alert('No JWT token found in localStorage, sessionStorage, or cookies.');
+        return;
+    }
+
+    try {
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+            throw new Error('Invalid JWT format. Token must have 3 parts separated by dots.');
+        }
+
+        const decodeBase64 = (str) => decodeURIComponent(atob(str).split('').map(c => {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const header = JSON.parse(decodeBase64(parts[0]));
+        const payload = JSON.parse(decodeBase64(parts[1]));
+
+        console.log('Decoded JWT Header:', header);
+        console.log('Decoded JWT Payload:', payload);
+
+        alert(`Header: ${JSON.stringify(header, null, 2)}\n\nPayload: ${JSON.stringify(payload, null, 2)}`);
+    } catch (error) {
+        alert(`Error decoding JWT: ${error.message}`);
+    }
+});

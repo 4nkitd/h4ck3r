@@ -36,6 +36,7 @@ function saveToolbarSettings() {
         reset: $('#toolbar_reset_toggle').is(':checked'),
         hide: $('#toolbar_hide_toggle').is(':checked'),
         reload: $('#toolbar_reload_toggle').is(':checked'),
+        domains: $('#toolbar_domains_toggle').is(':checked'),
         needed: $('#toolbar_needed_toggle').is(':checked')
     };
 
@@ -43,6 +44,7 @@ function saveToolbarSettings() {
     localStorage.setItem('h4ck3r.toolbar.reset', settings.reset);
     localStorage.setItem('h4ck3r.toolbar.hideToggle', settings.hide); // Renamed key slightly to avoid conflict with existing 'h4ck3r.hide'
     localStorage.setItem('h4ck3r.toolbar.reload', settings.reload);
+    localStorage.setItem('h4ck3r.toolbar.domains', settings.domains);
     localStorage.setItem('h4ck3r.toolbar.needed', settings.needed);
 
     // Show saved message

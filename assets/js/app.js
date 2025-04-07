@@ -192,6 +192,191 @@ $(function() {
         }
     });
 
+    // Function to format and display domain extraction results
+    function displayDomainResults(domains) {
+        let domainList = Array.from(domains).sort();
+        let output = domainList.join('\n');
+        $('#domains_output').text(output);
+        
+        // Copy results to clipboard automatically
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = output;
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextarea);
+    }
+
+    // Extract domains from active tab when button is clicked
+    $('.extract_domains').on('click', function() {
+        // For pages loaded in DevTools panel, we need to communicate with background script
+        if (chrome && chrome.devtools) {
+            chrome.devtools.inspectedWindow.eval(
+                `
+                (function() {
+                    const domains = new Set();
+                    const links = document.querySelectorAll('a[href]');
+                    const images = document.querySelectorAll('img[src]');
+                    const scripts = document.querySelectorAll('script[src]');
+                    const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+                    const iframes = document.querySelectorAll('iframe[src]');
+                    
+                    // Extract domains from all links
+                    links.forEach(link => {
+                        try {
+                            const url = new URL(link.href);
+                            domains.add(url.hostname);
+                        } catch (e) {}
+                    });
+                    
+                    // Extract domains from images
+                    images.forEach(img => {
+                        try {
+                            if (img.src.startsWith('http')) {
+                                const url = new URL(img.src);
+                                domains.add(url.hostname);
+                            }
+                        } catch (e) {}
+                    });
+                    
+                    // Extract domains from scripts
+                    scripts.forEach(script => {
+                        try {
+                            if (script.src) {
+                                const url = new URL(script.src);
+                                domains.add(url.hostname);
+                            }
+                        } catch (e) {}
+                    });
+                    
+                    // Extract domains from stylesheets
+                    stylesheets.forEach(sheet => {
+                        try {
+                            if (sheet.href) {
+                                const url = new URL(sheet.href);
+                                domains.add(url.hostname);
+                            }
+                        } catch (e) {}
+                    });
+                    
+                    // Extract domains from iframes
+                    iframes.forEach(iframe => {
+                        try {
+                            if (iframe.src.startsWith('http')) {
+                                const url = new URL(iframe.src);
+                                domains.add(url.hostname);
+                            }
+                        } catch (e) {}
+                    });
+                    
+                    return Array.from(domains);
+                })()
+                `, 
+                function(result, isException) {
+                    if (isException) {
+                        $('#domains_output').text('Error extracting domains: ' + isException);
+                    } else {
+                        const domains = new Set(result);
+                        displayDomainResults(domains);
+                    }
+                }
+            );
+        }
+    });
+
+    // Global function to extract domains from page (used by toolbar button)
+    window.extractDomainsFromPage = function() {
+        const domains = new Set();
+        
+        // Only execute if we're in the main window, not in the DevTools panel
+        if (!chrome || !chrome.devtools) {
+            try {
+                // Collect all elements that might have domains
+                const links = document.querySelectorAll('a[href]');
+                const images = document.querySelectorAll('img[src]');
+                const scripts = document.querySelectorAll('script[src]');
+                const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+                const iframes = document.querySelectorAll('iframe[src]');
+                const sources = document.querySelectorAll('source[src]');
+                
+                // Extract domains from links
+                links.forEach(link => {
+                    try {
+                        const url = new URL(link.href, window.location.href);
+                        domains.add(url.hostname);
+                    } catch (e) {}
+                });
+                
+                // Extract domains from images
+                images.forEach(img => {
+                    try {
+                        const url = new URL(img.src, window.location.href);
+                        domains.add(url.hostname);
+                    } catch (e) {}
+                });
+                
+                // Extract domains from scripts
+                scripts.forEach(script => {
+                    try {
+                        if (script.src) {
+                            const url = new URL(script.src, window.location.href);
+                            domains.add(url.hostname);
+                        }
+                    } catch (e) {}
+                });
+                
+                // Extract domains from stylesheets
+                stylesheets.forEach(sheet => {
+                    try {
+                        if (sheet.href) {
+                            const url = new URL(sheet.href, window.location.href);
+                            domains.add(url.hostname);
+                        }
+                    } catch (e) {}
+                });
+                
+                // Extract domains from iframes
+                iframes.forEach(iframe => {
+                    try {
+                        if (iframe.src) {
+                            const url = new URL(iframe.src, window.location.href);
+                            domains.add(url.hostname);
+                        }
+                    } catch (e) {}
+                });
+                
+                // Extract domains from source elements (video, audio)
+                sources.forEach(source => {
+                    try {
+                        if (source.src) {
+                            const url = new URL(source.src, window.location.href);
+                            domains.add(url.hostname);
+                        }
+                    } catch (e) {}
+                });
+                
+                // Format and display the results
+                let domainList = Array.from(domains).sort();
+                let output = domainList.join('\n');
+                
+                // Display in alert for toolbar button
+                alert("Domains found on this page:\n\n" + output);
+                
+                // Copy to clipboard
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = output;
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextarea);
+                
+                console.log("Domains copied to clipboard:", domainList);
+            } catch (e) {
+                console.error("Error extracting domains:", e);
+                alert("Error extracting domains: " + e.message);
+            }
+        }
+    };
 });
 
 function decodeJwtPart(base64Url) {

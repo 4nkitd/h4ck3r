@@ -29,11 +29,14 @@ A Browser Extension for chromium/firefox browser. Small tool for Developers & Pe
 * Auto Form Filler ( doesn't support radio buttons. )
 * Auto Reload
 * Auto Form Cleaner 
+* Domain Extraction (extracts all domains used on the current page)
 
 # Notes
 * will auto copy your result to clipboard from after version 0.0.3
 * password field will always be filled by ```#Admin123```
 * if you wan to un hide the toolbar ```h4ck3r.hide``` to ```0``` or ```false``` in localStorage of that site
+* domain extraction results are automatically copied to clipboard
+
 ## Store Availability
 * Firefox Extension: [here](https://addons.mozilla.org/en-US/firefox/addon/h4ck3r-d/)
 * Chrome Extension: [here](https://chrome.google.com/webstore/detail/h4ck3r/kmnlfjgamfnhcmpfnmgpiapacncdipad)

@@ -18,6 +18,17 @@ interface Tool {
   shortcut?: string;
 }
 
+interface ModHeaderRuleLocal {
+  id: number;
+  enabled: boolean;
+  name: string;
+  urlPattern: string;
+  headerType: 'request' | 'response';
+  operation: 'set' | 'remove';
+  headerName: string;
+  headerValue: string;
+}
+
 // Tool definitions
 const tools: Tool[] = [
   { id: 'base64', title: 'Base64 Encoder/Decoder', category: 'Encoding', shortcut: '⌘1' },
@@ -477,7 +488,7 @@ function renderShellGenerator() {
 // Render ModHeader - Full inline configuration
 function renderModHeaderLink() {
   toolContent.innerHTML = `
-    <div class="tool-panel" style="max-height: calc(100vh - 150px); overflow-y: auto;">
+    <div class="tool-panel" style="max-height: calc(100vh - 150px); overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;">
       <!-- Header with global toggle -->
       <div class="flex justify-between items-center" style="margin-bottom: var(--spacing-md);">
         <div>
@@ -571,25 +582,16 @@ function renderModHeaderLink() {
   let globalEnabled = true;
   let nextRuleId = 1;
 
-  interface ModHeaderRuleLocal {
-    id: number;
-    enabled: boolean;
-    name: string;
-    urlPattern: string;
-    headerType: 'request' | 'response';
-    operation: 'set' | 'remove';
-    headerName: string;
-    headerValue: string;
-  }
+
 
   // Load rules
   loadRules();
 
   async function loadRules() {
     const result = await chrome.storage.local.get(['modHeaderRules', 'modHeaderEnabled', 'modHeaderNextId']);
-    rules = result.modHeaderRules || [];
+    rules = (result.modHeaderRules as ModHeaderRuleLocal[]) || [];
     globalEnabled = result.modHeaderEnabled !== false;
-    nextRuleId = result.modHeaderNextId || 1;
+    nextRuleId = (result.modHeaderNextId as number) || 1;
 
     (document.getElementById('modHeaderGlobalToggle') as HTMLInputElement).checked = globalEnabled;
     renderRules();
@@ -1069,26 +1071,6 @@ async function copyToClipboard(text: string) {
   }
 }
 
-async function handlePaste() {
-  try {
-    const text = await navigator.clipboard.readText();
-    const input = document.getElementById('inputText') as HTMLTextAreaElement;
-    if (input) input.value = text;
-    showToast('Pasted from clipboard', 'success');
-  } catch {
-    showToast('Failed to paste', 'error');
-  }
-}
-
-function swapInputOutput() {
-  const input = document.getElementById('inputText') as HTMLTextAreaElement;
-  const output = document.getElementById('outputText') as HTMLTextAreaElement;
-  if (input && output) {
-    const temp = input.value;
-    input.value = output.value;
-    output.value = temp;
-  }
-}
 
 // Command Palette
 function openCommandPalette() {
@@ -1171,7 +1153,7 @@ function escapeHtml(text: string): string {
 // Render Settings panel (integrated into sidebar)
 function renderSettings() {
   toolContent.innerHTML = `
-    <div class="tool-panel" style="max-height: calc(100vh - 150px); overflow-y: auto;">
+    <div class="tool-panel">
       <!-- Toolbar Settings -->
       <div class="card" style="margin-bottom: var(--spacing-md);">
         <div class="card-header">
@@ -1282,7 +1264,7 @@ function renderSettings() {
   document.getElementById('toolbarEnabled')?.addEventListener('change', saveSettingsState);
 
   document.getElementById('openModHeaderConfig')?.addEventListener('click', () => {
-    chrome.tabs.create({ url: chrome.runtime.getURL('src/modheader/index.html') });
+    loadTool('modheader');
   });
 
   document.getElementById('exportModHeaderRules')?.addEventListener('click', exportModHeaderRules);
@@ -1312,9 +1294,9 @@ async function saveSettingsState() {
 async function loadModHeaderStats() {
   try {
     const result = await chrome.storage.local.get(['modHeaderRules', 'modHeaderEnabled']);
-    const rules = result.modHeaderRules || [];
+    const rules = (result.modHeaderRules as ModHeaderRuleLocal[]) || [];
     const enabled = result.modHeaderEnabled !== false;
-    const activeRules = rules.filter((r: { enabled: boolean }) => r.enabled).length;
+    const activeRules = rules.filter((r: ModHeaderRuleLocal) => r.enabled).length;
 
     const statsDiv = document.getElementById('modHeaderStats');
     if (statsDiv) {

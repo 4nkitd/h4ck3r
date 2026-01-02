@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h4ck3r - ModHeader</title>
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="modheader.css">
+</head>
+<body class="bg-body">
+    <div class="container-fluid py-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-success m-0">
+                <span class="text-white">&lt;/&gt;</span> ModHeader
+            </h4>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="globalToggle" checked>
+                <label class="form-check-label text-success" for="globalToggle">Enable All</label>
+            </div>
+        </div>
+
+        <!-- Add New Rule Form -->
+        <div class="card bg-dark border-success mb-3">
+            <div class="card-header bg-dark text-success border-success">
+                <strong>Add New Rule</strong>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" 
+                               id="ruleName" placeholder="Rule Name">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" 
+                               id="urlPattern" placeholder="URL Pattern (e.g., *://api.example.com/*)">
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" id="headerType">
+                            <option value="request">Request</option>
+                            <option value="response">Response</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" id="operation">
+                            <option value="set">Set</option>
+                            <option value="remove">Remove</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" 
+                               id="headerName" placeholder="Header Name (e.g., Authorization)">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" 
+                               id="headerValue" placeholder="Header Value">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success btn-sm w-100" id="addRuleBtn">
+                            + Add Rule
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rules Table -->
+        <div class="card bg-dark border-success">
+            <div class="card-header bg-dark text-success border-success d-flex justify-content-between align-items-center">
+                <strong>Active Rules</strong>
+                <div>
+                    <button class="btn btn-outline-success btn-sm me-2" id="exportBtn">Export</button>
+                    <label class="btn btn-outline-success btn-sm mb-0">
+                        Import
+                        <input type="file" id="importFile" accept=".json" style="display: none;">
+                    </label>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-dark table-hover mb-0">
+                    <thead>
+                        <tr class="text-success">
+                            <th style="width: 50px;">On</th>
+                            <th>Name</th>
+                            <th>URL Pattern</th>
+                            <th>Type</th>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th style="width: 80px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rulesTableBody">
+                        <!-- Rules will be dynamically inserted here -->
+                    </tbody>
+                </table>
+                <div id="noRulesMessage" class="text-center text-muted py-4" style="display: none;">
+                    No rules configured. Add a rule above to get started.
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="alert alert-success mt-3" style="display: none;"></div>
+    </div>
+
+    <script src="../assets/js/jquery.js"></script>
+    <script src="modheader.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* ModHeader specific styles */
+body {
+    min-width: 700px;
+    background-color: #1a1a1a !important;
+}
+
+.card {
+    border-radius: 8px;
+}
+
+.card-header {
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.form-control, .form-select {
+    font-size: 0.85rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+.table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-bottom: 1px solid #28a745 !important;
+}
+
+.table td {
+    font-size: 0.85rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #333 !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(40, 167, 69, 0.1) !important;
+}
+
+.form-check-input:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.form-switch .form-check-input {
+    width: 2.5em;
+    height: 1.25em;
+}
+
+.btn-danger-outline {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger-outline:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-request {
+    background-color: #0d6efd;
+}
+
+.badge-response {
+    background-color: #6f42c1;
+}
+
+.badge-set {
+    background-color: #198754;
+}
+
+.badge-remove {
+    background-color: #dc3545;
+}
+
+.header-value {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.action-btn {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.75rem;
+}
+
+#statusMessage {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #28a745;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #218838;
+}

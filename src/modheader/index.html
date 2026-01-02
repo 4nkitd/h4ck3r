@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>h4ck3r - ModHeader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container" style="max-width: 900px; padding: 1.5rem;">
+    <div class="flex justify-between items-center" style="margin-bottom: 1.5rem;">
+      <div class="flex items-center gap-md">
+        <h1 class="text-xl text-primary">&lt;/&gt; ModHeader</h1>
+      </div>
+      <div class="flex items-center gap-sm">
+        <label class="switch">
+          <input type="checkbox" id="globalToggle" checked>
+          <span class="switch-thumb"></span>
+        </label>
+        <span class="text-sm">Enable All</span>
+      </div>
+    </div>
+    
+    <!-- Add Rule Form -->
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <div class="card-header">
+        <span class="card-title">Add New Rule</span>
+      </div>
+      <div class="card-content">
+        <div class="grid grid-cols-2 gap-sm" style="margin-bottom: 0.5rem;">
+          <input type="text" class="input" id="ruleName" placeholder="Rule Name">
+          <input type="text" class="input" id="urlPattern" placeholder="URL Pattern (e.g., *://api.example.com/*)">
+        </div>
+        <div class="grid grid-cols-3 gap-sm" style="margin-bottom: 0.5rem;">
+          <select class="input select" id="headerType">
+            <option value="request">Request Header</option>
+            <option value="response">Response Header</option>
+          </select>
+          <select class="input select" id="operation">
+            <option value="set">Set Value</option>
+            <option value="remove">Remove Header</option>
+          </select>
+          <input type="text" class="input" id="headerName" placeholder="Header Name">
+        </div>
+        <div class="flex gap-sm">
+          <input type="text" class="input" id="headerValue" placeholder="Header Value" style="flex: 1;">
+          <button class="btn btn-primary" id="addRuleBtn">+ Add Rule</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Rules Table -->
+    <div class="card">
+      <div class="card-header flex justify-between items-center">
+        <span class="card-title">Active Rules</span>
+        <div class="flex gap-sm">
+          <button class="btn btn-outline btn-sm" id="exportBtn">Export</button>
+          <label class="btn btn-outline btn-sm" style="cursor: pointer;">
+            Import
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+          </label>
+        </div>
+      </div>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 60px;">On</th>
+              <th>Name</th>
+              <th>URL</th>
+              <th>Type</th>
+              <th>Header</th>
+              <th>Value</th>
+              <th style="width: 60px;"></th>
+            </tr>
+          </thead>
+          <tbody id="rulesTableBody">
+          </tbody>
+        </table>
+      </div>
+      <div id="noRules" class="text-muted" style="text-align: center; padding: 2rem; display: none;">
+        No rules configured. Add a rule above to get started.
+      </div>
+    </div>
+    
+    <!-- Status -->
+    <div id="status" class="toast toast-success" style="display: none; position: fixed; bottom: 1rem; right: 1rem;"></div>
+  </div>
+  
+  <script type="module" src="./modheader.ts"></script>
+</body>
+</html>

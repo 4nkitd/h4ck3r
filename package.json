@@ -1,0 +1,41 @@
+{
+  "name": "h4ck3r",
+  "version": "0.2.0",
+  "description": "All in one Red Team Developer Tool Kit - Browser Extension",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "build:zip": "npm run build && cd dist && zip -r ../h4ck3r-extension.zip ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4nkitd/h4ck3r.git"
+  },
+  "keywords": [
+    "chrome-extension",
+    "security",
+    "pentesting",
+    "red-team",
+    "developer-tools"
+  ],
+  "author": "4nkitd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/4nkitd/h4ck3r/issues"
+  },
+  "homepage": "https://github.com/4nkitd/h4ck3r#readme",
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0-beta.33",
+    "@types/chrome": "^0.1.32",
+    "@types/crypto-js": "^4.2.2",
+    "@types/jquery": "^3.5.33",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
+}

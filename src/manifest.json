@@ -1,0 +1,54 @@
+{
+    "manifest_version": 3,
+    "name": "h4ck3r",
+    "version": "0.2.0",
+    "description": "All in one Red Team Developer Tool Kit",
+    "action": {
+        "default_title": "h4ck3r - Click to open",
+        "default_icon": {
+            "16": "src/assets/icons/icon-16.png",
+            "32": "src/assets/icons/icon-32.png",
+            "48": "src/assets/icons/icon-48.png",
+            "128": "src/assets/icons/icon-128.png"
+        }
+    },
+    "options_ui": {
+        "page": "src/options/index.html",
+        "open_in_tab": true
+    },
+    "icons": {
+        "16": "src/assets/icons/icon-16.png",
+        "32": "src/assets/icons/icon-32.png",
+        "48": "src/assets/icons/icon-48.png",
+        "128": "src/assets/icons/icon-128.png"
+    },
+    "devtools_page": "src/devtools/index.html",
+    "permissions": [
+        "declarativeNetRequest",
+        "declarativeNetRequestWithHostAccess",
+        "storage",
+        "sidePanel",
+        "scripting",
+        "activeTab"
+    ],
+    "side_panel": {
+        "default_path": "src/popup/index.html"
+    },
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "background": {
+        "service_worker": "src/background/index.ts",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "src/content/index.ts"
+            ],
+            "matches": [
+                "*://*/*"
+            ]
+        }
+    ]
+}

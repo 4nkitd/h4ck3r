@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>h4ck3r - Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container" style="max-width: 600px; margin: 0 auto; padding: 2rem;">
+    <h1>h4ck3r Settings</h1>
+    
+    <div class="card" style="margin-top: 1.5rem;">
+      <div class="card-header">
+        <span class="card-title">Toolbar Settings</span>
+      </div>
+      <div class="card-content">
+        <div class="setting-row">
+          <label>
+            <input type="checkbox" id="toolbarEnabled" checked>
+            Show toolbar on pages
+          </label>
+        </div>
+        <div class="setting-row">
+          <label>
+            <input type="checkbox" id="autoFillEnabled" checked>
+            Enable auto-fill button
+          </label>
+        </div>
+        <div class="setting-row">
+          <label>
+            <input type="checkbox" id="domainsEnabled" checked>
+            Enable domain extractor button
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" style="margin-top: 1.5rem;">
+      <div class="card-header">
+        <span class="card-title">ModHeader</span>
+      </div>
+      <div class="card-content">
+        <p class="text-muted">Manage HTTP header rules in the popup under "ModHeader".</p>
+        <button class="btn btn-primary" id="clearRules" style="margin-top: 1rem;">
+          Clear All Rules
+        </button>
+      </div>
+    </div>
+    
+    <div class="card" style="margin-top: 1.5rem;">
+      <div class="card-header">
+        <span class="card-title">About</span>
+      </div>
+      <div class="card-content">
+        <p>h4ck3r v0.2.0</p>
+        <p class="text-muted">All in one Red Team Developer Tool Kit</p>
+        <p style="margin-top: 1rem;">
+          <a href="https://github.com/4nkitd/h4ck3r" target="_blank">GitHub</a>
+        </p>
+      </div>
+    </div>
+    
+    <div id="toast" class="toast" style="display: none;"></div>
+  </div>
+  
+  <script type="module" src="./options.ts"></script>
+</body>
+</html>
